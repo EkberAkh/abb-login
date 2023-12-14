@@ -5,6 +5,8 @@ export default function Home() {
    <>
    <h1>Ela Super yaxsi</h1>
    <h1>...</h1>
+   <h1>dev</h1>
    </>
+   
   )
 }
