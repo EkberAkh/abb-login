@@ -8,6 +8,11 @@ export default function Home() {
 
    <h1>dev</h1>
    <h2>ziyeddin</h2>
+   <p>salam</p>
+   <p>salam</p>
+   <p>salam</p>
+   <p>salam</p>
+
 
    </>
    
