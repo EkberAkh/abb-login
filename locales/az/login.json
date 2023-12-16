@@ -1,0 +1,164 @@
+{
+  "title": "ABB Biznes",
+  "subTitle": "Daxil ol",
+  "salaryProject": "Əməkhaqqı layihəsi",
+  "search":"Axtar",
+  "bannerText": "Yeni İnternet Bankla Xidmətinizdəyik",
+  "automateSalaryPayments": "Əməkhaqqı ödənişlərini avtomatlaşdırın",
+  "asanImza": "ASAN İmza",
+  "phoneNumber": "ASAN İmza mobil nömrəsi",
+  "asanID": "ASAN İmza istifadəçi ID-si",
+  "username": "İstifadəçi adı",
+  "firstPassword": "Şifrə",
+  "kobilOTP": "KOBIL OTP",
+  "otp": "OTP",
+  "checkKYC":"Sorğunuz icradadır.",
+  "customerNoSuccess": "Hörmətli Müştəri, yaxın zamanda qeydiyyat prosesi ilə bağlı Sizə mail vasitəsi ilə məlumat bildiriləcəkdir.",
+  "backToLogin": "Girişə qayıdın",
+  "beCustomer": "Qeydiyyat",
+  "or": "və ya",
+  "forgotPassword": {
+    "forgotPasswordForm": {
+      "heading": "Şifrəmi unutdum",
+      "email_label": "E-mail",
+      "description": "İstifadəçi adınızı daxil edin və yeni şifrənin təyin olunması üçün sizə e-poçt vasitəsilə link göndəriləcək.",
+      "successDescription": "Zəhmət olmasa, {{maskedEmailAddress}} e-poçtunuzu yoxlayın.",
+      "resetPasswordButton": "Şifrəni yenilə",
+      "sentToMailbox": "Yeniləmə linki e-poçtunuza göndərildi.",
+      "sentToEmail": "Qeyd etdiyiniz istifadəçi mövcud olduğu təqdirdə, link mailinizə göndəriləcək."
+    },
+    "resetPasswordForm": {
+      "heading": "Şifrəni yenilə",
+      "newPassword": "Yeni şifrə",
+      "repeatPassword": "Şifrəni təkrarla",
+      "errorMessage": "<0>Yeni şifrə minimum</0> <1>12 simvoldan ibarət</1><0> olmalıdır. Yeni şifrə rəqəmlər, böyük və kiçik hərflərdən və xüsusi simvollardan (&,*,# və s.) ibarət olmalıdır.</0>",
+      "confirmButton": "Təsdiq et"
+    },
+    "passwordResetAlert": {
+      "heading": "Şifrə yeniləndi",
+      "description": "Artıq sistemə yeni şifrə ilə daxil ola bilərsiniz"
+    },
+    "resetFailoryPage": {
+      "heading": "Link artıq aktiv deyil",
+      "description": "Təqdim olunan link yalnız 1 dəfə olmaqla 24 saat vaxt intervalı ərzində istifadə oluna bilər. Zəhmət olmasa, yeni link əldə edin.",
+      "getANewLink": "Yeni link əldə et",
+      "token-not-found": "Token tapılmadı"
+    }
+  },
+  "organization": {
+    "choose": "Davam etmək üçün seçin",
+    "message": "Daxil olmaq istədiyiniz şirkəti seçməyiniz xahiş olunur"
+  },
+  "code": "Yoxlama kodu",
+  "howToGetAsanImza": "ASAN İmza necə alınmalı?",
+  "howToGetOldIB": "Köhnə İnternet Bankçılıq",
+  "info": "Davam edərək, IBAR xidmət şərtlərini qəbul edirəm və IBAR-ın İnternet Bankçılıq üzrə Qaydalarını oxuduğumu təsdiqləyirəm.",
+  "asanImzaTitle": "ASAN İmza təsdiqi",
+  "verificationMessage": "Zəhmət olmasa, telefonunuza göndərilmiş sorğunu qəbul edin. Sorğunun yoxlama kodunun aşağıdakı kod ilə eyni olmasını müqayisə edin.",
+  "errorMessages": {
+    "phoneNumber": {
+      "required": "Mobil nömrə qeyd olunmayıb",
+      "matches": "Nömrə formatı düzgün deyil"
+    },
+    "asanID": {
+      "required": "Asan ID qeyd olunmayıb",
+      "matches": "Asan ID düzgün deyil"
+    },
+    "username": {
+      "required": "İstifadəçi adı qeyd olunmayıb",
+      "matches": "İstifadəçi adı düzgün deyil"
+    },
+    "firstPassword": {
+      "required": "Şifrə qeyd olunmayıb",
+      "matches": "Şifrə düzgün deyil"
+    },
+    "otp": {
+      "required": "OTP qeyd olunmayıb",
+      "matches": "OTP ən az 8 simvoldan ibarət olmalıdır (yalnız rəqəm)."
+    },
+    "email": {
+      "required": "E-mail qeyd olunmayıb",
+      "matches": "E-mail düzgün deyil"
+    },
+    "newPassword": {
+      "required": "Yeni şifrə qeyd olunmayıb",
+      "matches": "Yeni şifrə düzgün deyil"
+    },
+    "repeatPassword": {
+      "required": "Təkrar şifrə qeyd olunmayıb",
+      "matches": "Təkrar şifrə yeni şifrə ilə eyni olmalıdır"
+    },
+    "auth": "İstifadəçi eyniləşdirməsi uğursuzdur. Zəhmət olmasa, təkrar yoxlayın.",
+    "blank": "İstifadəçi adı və ya şifrə boş ola bilməz.",
+    "incorrectOTP": "OTP yanlışdır. Zəhmət olmasa, təkrar yoxlayın.",
+    "blankOTP": "OTP boş ola bilməz."
+  },
+  "errors": {
+    "3005": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "2031": "Aylıq abunə haqqı ödənmədiyi üçün ASAN İmza xidməti dayandırılmışdır!",
+    "2018": "Autentifikasiya sertifikatı etibarlı deyil.",
+    "1000": "Daxili xəta.",
+    "1106": "Yanlış metod parametri.",
+    "2013": "Autentifikasiya sertifikatı tapılmamışdır.",
+    "2020": "ASAN İmza sertifikatı tapılmamışdır.",
+    "2017": "Verilən telefon nömrəsi və istifadəçi ID-si əlaqəli deyil.",
+    "1002": "Hal-hazırda servis çox yüklənmişdir. Lütfən, bir az sonra yenidən cəhd edin.",
+    "2021": "Verilən identifikatorla imza sertifikatı etibarlı deyil.",
+    "2004": "Verilən telefon nömrəsi və ya istifadəçi ID-si düzgün deyil.",
+    "2007": "Proses abonent tərəfindən dayandırılmısdır.",
+    "3023": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3022": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3024": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3011": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3010": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3025": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3020": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3012": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3008": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3018": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3016": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3014": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3019": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3013": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3015": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3017": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3009": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3100": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3006": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3003": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3007": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3001": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3002": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "3004": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "451": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "500": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "UNKNOWN": "Sistem xətası baş verdi. Zəhmət olmasa təkrar yoxlayın.",
+    "AUTH_CERT_IS_NOT_VALID_ERROR": "Autentifikasiya sertifikatı etibarlı deyil.",
+    "INTERNAL_ERROR": "Daxili xəta.",
+    "INVALID_PARAMS_ERROR": "Yanlış metod parametri.",
+    "NO_AUTH_CERT_ERROR": "Autentifikasiya sertifikatı tapılmamışdır.",
+    "NO_SIGN_CERT_ERROR": "ASAN İmza sertifikatı tapılmamışdır.",
+    "PHONE_NUMBER_AND_PERSONAL_CODE_NOT_RELATED_ERROR": "Verilən telefon nömrəsi və İstifadəçi ID-si əlaqəli deyil.",
+    "SERVICE_OVERLOADED_ERROR": "Hal-hazırda servis çox yüklənmişdir. Lütfən, bir az sonra yenidən cəhd edin.",
+    "SIGN_CERT_IS_NOT_VALID_ERROR": "Verilən identifikatorla imza sertifikatı etibarlı deyil.",
+    "UNKNOWN_PHONE_NUMBER_ERROR": "Telefon nömrəsi təyin olunmadı. Düzgün telefon nömrəsinin daxil edildiyindən əmin olun.",
+    "EXPIRED_TRANSACTION": "Sorğu üçün ayrılmış müddət bitdi.",
+    "NOT_VALID": "İmza etibarsızdır.",
+    "PHONE_ABSENT": "Nömrəyə zəng çatmır və ya əhatə dairəsi xaricindədir.",
+    "SENDING_ERROR": "Prosesin başlanması mümkün deyildir.",
+    "SIM_ERROR": "SIM kart xətası baş verdi.",
+    "USER_CANCEL": "Proses abonent tərəfindən dayandırılmışdır.",
+    "CERTIFICATE_NOT_FOUND": "ASAN İmza sertifikatı tapılmamışdır",
+    "SID_NOT_FOUND": "Asan imza tarixçəsində belə bir SID tapılmadı",
+    "TOKEN_NOT_FOUND": "Açar söz tapılmadı!",
+    "TOKEN_REFRESH_COUNT_EXCEEDED": "Açar söz yenilənmə limiti aşıldı!",
+    "USER_NOT_FOUND": "Qeyd edilən istifadəçi mövcud deyildir. İstifadəçinin yaradılması üçün ABB-yə məxsus filiala müraciət etməyiniz xahiş olunur.",
+    "DIRECTOR_USER_NOT_FOUND":"Hörmətli Müştəri sistem üzrə qeydiyyatınız mövcud deyildir. İB-nin əsas səhifəsində 'Qeydiyyat' düyməsini seçərək, qeydiyyatdan keçə bilərsiniz.",
+    "SEND_TO_EMAIL": "Yazdığınız məlumatlara uyğun istfadəçi mövcuddursa, link mailinizə göndərildi",
+    "USERNAME_OR_PASSWORD_IS_WRONG": "İstifadəçi adı və ya şifrə yalnışdır",
+    "EXCEEDED_REFRESH_COUNT": "Yenilənmə limit aşıldı",
+    "USER_DEACTIVATED": "İstifadəçi deaktivdir",
+    "INVALID_REFRESH_TOKEN": " Yalnış açar söz",
+    "ONBOARDING_FAIL":"Hörmətli Müştəri, qeydiyyat prosesi ilə bağlı məlumat Sizə mail vasitəsi ilə göndərilmişdir. Xahiş olunur, e-poçt ünvanınızı yoxlayardınız."
+  }
+}
