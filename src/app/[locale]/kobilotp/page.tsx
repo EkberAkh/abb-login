@@ -21,6 +21,7 @@ const kobilOTP = () => {
   const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
   return (
     <Layout>
+
       <VStack
         marginY="0"
         marginX="auto"
@@ -38,6 +39,7 @@ const kobilOTP = () => {
           <Link href={"/login"}>
             <Text>ASAN imza</Text>
           </Link>
+
           <span>/</span>
           <Link href={"/kobilotp"}>
             <Text color={isKobilOtpPath ? "gray.700" : "gray.400"}>
