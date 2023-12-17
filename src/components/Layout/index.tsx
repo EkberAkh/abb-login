@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Flex, HStack, VStack } from "@chakra-ui/react";
 import React from "react";
 import { Header } from "./Header";
@@ -10,7 +12,6 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         flex={{ base: "1", lg: "1", xl: "5 1 0" }}
         minH="100vh"
         justifyContent="space-between"
-        bg="red.400"
       >
         <Header />
         <Flex>{children}</Flex>
