@@ -21,9 +21,23 @@ const kobilOTP = () => {
   const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
   return (
     <Layout>
-      <VStack gap="24px" alignItems="start" padding="80px" width="100%">
-      <HStack fontSize="30px" lineHeight="36px" fontWeight="600"  color="gray.400">
-          <Link href={"/login"}>ASAN imza</Link>
+      <VStack
+        marginY="0"
+        marginX="auto"
+        maxWidth="480px"
+        alignItems="start"
+        width="100%"
+      >
+        <HStack
+        mb="24px"
+          fontSize="30px"
+          lineHeight="36px"
+          fontWeight="600"
+          color="gray.400"
+        >
+          <Link href={"/login"}>
+            <Text>ASAN imza</Text>
+          </Link>
           <span>/</span>
           <Link href={"/kobilotp"}>
             <Text color={isKobilOtpPath ? "gray.700" : "gray.400"}>
@@ -31,7 +45,7 @@ const kobilOTP = () => {
             </Text>
           </Link>
         </HStack>
-        <FormControl gap="24px">
+        <FormControl >
           <FormLabel mb="6px" fontWeight="500">
             İstifadəçi adı
           </FormLabel>
@@ -55,7 +69,7 @@ const kobilOTP = () => {
         >
           Davam et
         </Button>
-        <Text alignSelf="center">və ya</Text>
+        <Text alignSelf="center" mt="24px" mb="24px">və ya</Text>
         <Button
           width="100%"
           padding="10px 24px"
