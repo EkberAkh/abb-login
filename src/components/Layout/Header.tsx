@@ -15,7 +15,7 @@ export const Header = () => {
       <Image alt="ABB Business Logo" src="/login/images/logo-business.svg" />
       <HStack spacing="16px">
         {langs.map((lang) => (
-          <Link href={`/${lang}`} key={lang}>
+          <Link href={`/${lang}`} locale={lang} key={lang}>
             <Text
               id={`language-button-${lang}`}
               data-test-id={`language-button-${lang}`}

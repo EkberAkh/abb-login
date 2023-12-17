@@ -1,4 +1,5 @@
-// next.config.js
-module.exports = {
+const withNextIntl = require("next-intl/plugin")();
+
+module.exports = withNextIntl({
   basePath: "/login",
-};
+});

@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { Providers } from "./Provider";
 import "./globals.css";
 
+import React from "react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -10,13 +12,16 @@ export const metadata: Metadata = {
   description: "ABB Business",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface IProps {
   children: React.ReactNode;
-}) {
+  params: {
+    locale: string;
+  };
+}
+
+export default function RootLayout({ children, params: { locale } }: IProps) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>

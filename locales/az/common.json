@@ -35,7 +35,7 @@
     "download_pdf": "PDF yüklə",
     "print": "Çap et",
     "date": "Tarix",
-    "select": "Seçin",
+    "select": "Seç",
     "delete_selected": "{{num}} elementi sil",
     "edit_selected": "{{num}} elementi redaktə et",
     "backToLogin": "Girişə qayıdın",
@@ -54,7 +54,8 @@
     "order": "Müraciət et"
   },
   "errors": {
-    "NOT_FOUND_CUSTOMER":"İstifadəçi tapılmadı",
+    "voenNextPin2":"Hörmətli Müştəri, hal-hazırda texniki işlər aparılır. Zəhmət olmasa, biraz sonra yenidən qeydiyyatdan keçməyə cəhd edərdiniz",
+    "one_user_more_cif":" Hörmətli Müştəri, müştəri məlumatlarınız üzrə düzəliş gərəklidir. Məsələ ilə bağlı ABB-yə məxsus filial və ya şöbəyə müraciət etməyiniz xahiş olunur.",
     "system": "Sistemdə xəta baş verdi",
     "404": "Səhifə tapılmadı",
     "permissionError": "Sorğu zamanı xəta baş verdi. Zəhmət olmasa, səhifəni yeniləyin.",
