@@ -17,18 +17,19 @@ import React from "react";
 const kobilOTP = () => {
   const currentPath = usePathname();
   console.log(currentPath);
+
+  const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
   return (
     <Layout>
       <VStack gap="24px" alignItems="start" padding="80px" width="100%">
-        <HStack
-          fontSize="30px"
-          lineHeight="36px"
-          fontWeight="600"
-          color={currentPath === "/az/kobilotp" ? "gray.700" : "gray.400"}
-        >
-          <Link href={"/"}>ASAN imza </Link>
+      <HStack fontSize="30px" lineHeight="36px" fontWeight="600"  color="gray.400">
+          <Link href={"/login"}>ASAN imza</Link>
           <span>/</span>
-          <Link href={"/kobilotp"}>KOBIL OTP</Link>
+          <Link href={"/kobilotp"}>
+            <Text color={isKobilOtpPath ? "gray.700" : "gray.400"}>
+              KOBIL OTP
+            </Text>
+          </Link>
         </HStack>
         <FormControl gap="24px">
           <FormLabel mb="6px" fontWeight="500">
