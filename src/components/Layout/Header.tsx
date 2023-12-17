@@ -11,7 +11,7 @@ export const Header = () => {
   console.log(currentPath);
 
   return (
-    <HStack bg="green.400" w="100%" justify="space-between" padding="28px 32px">
+    <HStack w="100%" justify="space-between" padding="28px 32px">
       <Image alt="ABB Business Logo" src="/login/images/logo-business.svg" />
       <HStack spacing="16px">
         {langs.map((lang) => (

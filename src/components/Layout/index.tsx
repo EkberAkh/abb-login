@@ -10,11 +10,11 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         flex={{ base: "1", lg: "1", xl: "5 1 0" }}
         minH="100vh"
         justifyContent="space-between"
-        bg="red.400"
+       
       >
         <Header />
-        <Flex>{children}</Flex>
-        <Footer/>
+        <Flex width="100%" >{children}</Flex>
+        <Footer />
       </VStack>
       <Box
         flex={{ base: "0", lg: "0", xl: "7 1 0" }}

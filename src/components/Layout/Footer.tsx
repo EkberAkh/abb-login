@@ -6,7 +6,6 @@ import React from "react";
 const Footer = () => {
   return (
     <HStack
-      bg="blue.100"
       w="100%"
       justify="space-between"
       align="center"
