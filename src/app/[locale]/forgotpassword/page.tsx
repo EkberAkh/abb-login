@@ -32,7 +32,7 @@ const forgotPassword = () => {
         <Text mb="32px" fontWeight="700">
           Şifrəmi unutdum
         </Text>
-        <form onSubmit={handleSubmit(submitFunc)}>
+        <form style={{width:'100%'}} onSubmit={handleSubmit(submitFunc)}>
           <FormControl gap="24px" >
             <FormLabel mb="6px" fontWeight="500">
               İstifadəçi adı
