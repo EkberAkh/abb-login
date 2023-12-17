@@ -1,6 +1,7 @@
 import { Box, Flex, HStack, VStack } from "@chakra-ui/react";
 import React from "react";
 import { Header } from "./Header";
+import Footer from "./Footer";
 
 export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -13,7 +14,7 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       >
         <Header />
         <Flex>{children}</Flex>
-        <Flex>Footer</Flex>
+        <Footer/>
       </VStack>
       <Box
         flex={{ base: "0", lg: "0", xl: "7 1 0" }}
