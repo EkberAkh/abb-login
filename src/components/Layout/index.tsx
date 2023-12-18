@@ -12,10 +12,13 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         flex={{ base: "1", lg: "1", xl: "5 1 0" }}
         minH="100vh"
         justifyContent="space-between"
-      >
+
         <Header />
         <Flex w='100%'>{children}</Flex>
         <Footer/>
+
+       gap={0}
+   
       </VStack>
       <Box
         flex={{ base: "0", lg: "0", xl: "7 1 0" }}
