@@ -6,6 +6,7 @@
     "prev": "Previous",
     "next": "Next",
     "reset": "Reset",
+    "resetPassword":"Reset password",
     "close": "Close",
     "login": "Login",
     "logout": "Logout",

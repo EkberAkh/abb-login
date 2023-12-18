@@ -60,15 +60,15 @@ export default function Home() {
         </VStack>
         <VStack gap="8px" w="100%">
           <FormControl>
-            <FormLabel color="gray.700">ASAN İmza İstifadəçi ID-si</FormLabel>
+            <FormLabel color="gray.700">{t2("asanID")}</FormLabel>
             <Input type="number" w="100%" />
           </FormControl>
         </VStack>
-        <Button colorScheme="white" bg="gray.100" w="100%">
-          Davam et
+        <Button colorScheme="white" bg="gray.300" w="100%">
+          {t("actions.login")}
         </Button>
         <Text textAlign="center" w="100%" color="gray.600">
-          və ya
+          {t2("or")}
         </Text>
         <Button color="gray.800" w="100%">
           {t("actions.registration")}
