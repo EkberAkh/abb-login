@@ -1,5 +1,7 @@
 {
+  "username": "İstifadəçi adı",
   "actions": {
+    "registration": "Qeydiyyat",
     "back": "Geriyə",
     "prev": "Əvvəlki",
     "next": "Növbəti",

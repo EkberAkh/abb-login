@@ -17,6 +17,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useTranslations } from "next-intl";
 
 const kobilOTP = () => {
   const currentPath = usePathname() || '';
@@ -26,6 +27,7 @@ const kobilOTP = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+  const t = useTranslations()
   return (
     <Layout>
       <VStack

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 export const Header = () => {
   const langs = ["az", "en", "ru"];
 
-  const currentPath = usePathname();
+  const currentPath = usePathname()||'';
   console.log(currentPath);
 
   return (

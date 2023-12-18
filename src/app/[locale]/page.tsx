@@ -19,12 +19,9 @@ import { usePathname } from "next/navigation";
 
 export default function Home() {
   const currentPath = usePathname() || '';
-  console.log(currentPath);
-
   const isAsanImza = /^\/(az|en|ru)$/.test(currentPath);
-
-console.log(isAsanImza);
-
+  const t = useTranslations("common");
+  const t2 = useTranslations("onboarding");
   return (
     <Layout>
       <VStack
@@ -54,7 +51,7 @@ console.log(isAsanImza);
         </HStack>
         <VStack gap="8px" w="100%">
           <FormControl w="100%">
-            <FormLabel color="gray.700">ASAN İmza mobil nömrəsi</FormLabel>
+            <FormLabel color="gray.700">{t2("phoneNumber")}</FormLabel>
             <InputGroup w="100%">
               <InputLeftAddon children="+994" color="gray.700" bg="gray.100" />
               <Input type="tel" placeholder="00 000 00 00" w="100%" />
@@ -74,7 +71,7 @@ console.log(isAsanImza);
           və ya
         </Text>
         <Button color="gray.800" w="100%">
-          Qeydiyyat
+          {t("actions.registration")}
         </Button>
       </VStack>
     </Layout>
