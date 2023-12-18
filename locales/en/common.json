@@ -1,5 +1,7 @@
 {
+  "username":"username",
   "actions": {
+    "registration": "Registration",
     "back": "Back",
     "prev": "Previous",
     "next": "Next",

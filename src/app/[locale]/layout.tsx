@@ -4,6 +4,7 @@ import { Providers } from "./Provider";
 import "./globals.css";
 
 import React from "react";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,14 @@ interface IProps {
 }
 
 export default function RootLayout({ children, params: { locale } }: IProps) {
+  const messages = useMessages() 
   return (
     <html lang={locale}>
       <body className={inter.className}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+
         <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
