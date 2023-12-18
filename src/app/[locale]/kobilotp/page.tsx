@@ -17,8 +17,9 @@ import React from "react";
 const kobilOTP = () => {
   const currentPath = usePathname();
   console.log(currentPath);
-
   const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
+
+
   return (
     <Layout>
 
@@ -30,7 +31,7 @@ const kobilOTP = () => {
         width="100%"
       >
         <HStack
-        mb="24px"
+          mb="24px"
           fontSize="30px"
           lineHeight="36px"
           fontWeight="600"
@@ -51,14 +52,14 @@ const kobilOTP = () => {
           <FormLabel mb="6px" fontWeight="500">
             İstifadəçi adı
           </FormLabel>
-          <Input type="text" borderColor="gray.300" />
+          <Input type="text" borderColor="gray.300"/>
           <FormLabel mb="8px" mt="16px" fontWeight="500">
             Şifrə
           </FormLabel>
           <Input type="text" borderColor="gray.300" />
         </FormControl>
-        <Text alignSelf="self-end" color="#2058BB" fontWeight="500">
-          <Link href={"/"}>Şifrəmi unutdum</Link>
+        <Text alignSelf="self-end" color="#2058BB" fontWeight="500" fontSize="sm" mt="8px" mb="8px">
+          <Link href={"/az/forgotpassword"}>Şifrəmi unutdum</Link>
         </Text>
         <Button
           width="100%"
