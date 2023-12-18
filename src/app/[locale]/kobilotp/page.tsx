@@ -27,7 +27,8 @@ const kobilOTP = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  const t = useTranslations()
+  const t = useTranslations("common");
+  const t2 = useTranslations("onboarding");
   return (
     <Layout>
       <VStack
@@ -57,12 +58,12 @@ const kobilOTP = () => {
         </HStack>
         <FormControl>
           <FormLabel mb="6px" fontWeight="500">
-            İstifadəçi adı
+            {t2("username")}
           </FormLabel>
 
           <Input type="text" borderColor="gray.300" />
           <FormLabel mb="8px" mt="16px" fontWeight="500">
-            Şifrə
+            {t2("password")}
           </FormLabel>
           <InputGroup>
             <Input
@@ -90,7 +91,7 @@ const kobilOTP = () => {
           mt="8px"
           mb="8px"
         >
-          <Link href={"/az/forgotpassword"}>Şifrəmi unutdum</Link>
+          <Link href={"/az/forgotpassword"}>{t2("iforgotPassword")}</Link>
         </Text>
         <Button
           width="100%"
@@ -101,10 +102,10 @@ const kobilOTP = () => {
           lineHeight="28px"
           fontWeight="500"
         >
-          Davam et
+          {t("actions.login")}
         </Button>
         <Text alignSelf="center" mt="24px" mb="24px">
-          və ya
+        {t2("or")}
         </Text>
         <Button
           width="100%"
@@ -115,7 +116,7 @@ const kobilOTP = () => {
           lineHeight="28px"
           fontWeight="500"
         >
-          Qeydiyyat
+          {t("actions.registration")}
         </Button>
       </VStack>
     </Layout>
