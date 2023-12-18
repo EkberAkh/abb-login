@@ -23,6 +23,7 @@ export default function Home() {
 
   const isLoginPath = /\/(az|en|ru)\/login/.test(currentPath);
 
+
   return (
     <Layout>
       <VStack
@@ -45,7 +46,7 @@ export default function Home() {
           <Link href="/az/login">
             <Text color={isLoginPath ? "gray.700" : "gray.400"}>ASAN imza</Text>
           </Link>
-          <Text color="gray.400">/</Text>
+          <Text>/</Text>
           <Link href="/az/kobilotp">
             <Text>KOBIL OTP</Text>
           </Link>

@@ -9,20 +9,26 @@ import {
   Button,
   Text,
   Icon,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const kobilOTP = () => {
   const currentPath = usePathname();
   console.log(currentPath);
   const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
 
-
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <Layout>
-
       <VStack
         marginY="0"
         marginX="auto"
@@ -48,17 +54,41 @@ const kobilOTP = () => {
             </Text>
           </Link>
         </HStack>
-        <FormControl >
+        <FormControl>
           <FormLabel mb="6px" fontWeight="500">
             İstifadəçi adı
           </FormLabel>
-          <Input type="text" borderColor="gray.300"/>
+
+          <Input type="text" borderColor="gray.300" />
           <FormLabel mb="8px" mt="16px" fontWeight="500">
             Şifrə
           </FormLabel>
-          <Input type="text" borderColor="gray.300" />
+          <InputGroup>
+            <Input
+              type={showPassword ? "text" : "password"}
+              borderColor="gray.300"
+            />
+            <InputRightElement>
+              <IconButton
+                borderWidth="1px 1px 1px 0px"
+                borderColor="gray.300"
+                backgroundColor="white"
+                aria-label={showPassword ? "Hide Password" : "Show Password"}
+                icon={showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                onClick={handleTogglePassword}
+              />
+            </InputRightElement>
+          </InputGroup>
+         
         </FormControl>
-        <Text alignSelf="self-end" color="#2058BB" fontWeight="500" fontSize="sm" mt="8px" mb="8px">
+        <Text
+          alignSelf="self-end"
+          color="#2058BB"
+          fontWeight="500"
+          fontSize="sm"
+          mt="8px"
+          mb="8px"
+        >
           <Link href={"/az/forgotpassword"}>Şifrəmi unutdum</Link>
         </Text>
         <Button
@@ -72,7 +102,9 @@ const kobilOTP = () => {
         >
           Davam et
         </Button>
-        <Text alignSelf="center" mt="24px" mb="24px">və ya</Text>
+        <Text alignSelf="center" mt="24px" mb="24px">
+          və ya
+        </Text>
         <Button
           width="100%"
           padding="10px 24px"

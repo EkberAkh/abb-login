@@ -8,6 +8,7 @@ import {
   FormLabel,
   Input,
   Button,
+  HStack,
 } from "@chakra-ui/react";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -33,8 +34,8 @@ const forgotPassword = () => {
         <Text mb="32px" fontWeight="700">
           Şifrəmi unutdum
         </Text>
-        <form style={{width:'100%'}} onSubmit={handleSubmit(submitFunc)}>
-          <FormControl gap="24px" >
+        <form style={{ width: "100%" }} onSubmit={handleSubmit(submitFunc)}>
+          <FormControl gap="24px">
             <FormLabel mb="6px" fontWeight="500">
               İstifadəçi adı
             </FormLabel>
@@ -74,19 +75,23 @@ const forgotPassword = () => {
             </Button>
           </FormControl>
           <DevTool control={control} />
-        
-        <Link href={"/az/kobilotp"}>
-        <Button
-          colorScheme="teal"
-          variant="ghost"
-          width="100%"
-          mt="16px"
-          color="#2058BB"
-          padding="10px 24px"
-        >
-          Girişə qayıdın
-        </Button>
-        </Link>
+
+          <Link href={"/az/kobilotp"}>
+            <Button
+              colorScheme="teal"
+              variant="ghost"
+              width="100%"
+              mt="16px"
+              color="#2058BB"
+              padding="10px 24px"
+              fontSize="lg"
+            >
+              <HStack spacing="2">
+                <ArrowBackIcon width="24px" h="24px"/>
+                <Text> Girişə qayıdın</Text>
+              </HStack>
+            </Button>
+          </Link>
         </form>
       </VStack>
     </Layout>
