@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import Link from "next/link";
 const forgotPassword = () => {
   const {
     control,
@@ -74,7 +75,7 @@ const forgotPassword = () => {
           </FormControl>
           <DevTool control={control} />
         
-
+        <Link href={"/az/kobilotp"}>
         <Button
           colorScheme="teal"
           variant="ghost"
@@ -85,6 +86,7 @@ const forgotPassword = () => {
         >
           Girişə qayıdın
         </Button>
+        </Link>
         </form>
       </VStack>
     </Layout>
