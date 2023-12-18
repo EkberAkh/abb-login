@@ -18,11 +18,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Home() {
-  const currentPath = usePathname();
+  const currentPath = usePathname() || '';
   console.log(currentPath);
 
-  const isLoginPath = /\/(az|en|ru)\/login/.test(currentPath);
+  const isAsanImza = /^\/(az|en|ru)$/.test(currentPath);
 
+console.log(isAsanImza);
 
   return (
     <Layout>
@@ -44,7 +45,7 @@ export default function Home() {
           color="gray.400"
         >
           <Link href="/az/login">
-            <Text color={isLoginPath ? "gray.700" : "gray.400"}>ASAN imza</Text>
+            <Text color={isAsanImza ? 'gray.700' : 'gray.400'}>ASAN imza</Text>
           </Link>
           <Text>/</Text>
           <Link href="/az/kobilotp">
