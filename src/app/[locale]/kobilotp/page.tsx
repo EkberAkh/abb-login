@@ -19,8 +19,7 @@ import React from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const kobilOTP = () => {
-  const currentPath = usePathname();
-  console.log(currentPath);
+  const currentPath = usePathname() || '';
   const isKobilOtpPath = /\/(az|en|ru)\/kobilotp/.test(currentPath);
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -43,7 +42,7 @@ const kobilOTP = () => {
           fontWeight="600"
           color="gray.400"
         >
-          <Link href={"/login"}>
+          <Link href={"/"}>
             <Text>ASAN imza</Text>
           </Link>
 
