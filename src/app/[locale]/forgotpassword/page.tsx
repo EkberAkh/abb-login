@@ -74,7 +74,7 @@ const ForgotPassword = () => {
 
           <NavigationLink href="/">
             <Button
-              colorScheme="teal"
+              colorScheme="gray"
               variant="ghost"
               width="100%"
               mt="16px"
