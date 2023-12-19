@@ -56,11 +56,14 @@
   "sign": "Sign",
   "verificationMessage": "Please accept the request sent to your phone.",
   "errorMessages": {
+    "username": {"required": "Username not added"},
     "phoneNumber": {
+      "length": "Field must be 9 characters long",
       "required": "Mobile number must be added",
       "matches": "Mobile number is not correct"
     },
     "asanID": {
+      "length": "Field must be 6 characters long",
       "required": "ASAN ID code not added",
       "matches": "ASAN ID is not correct"
     },

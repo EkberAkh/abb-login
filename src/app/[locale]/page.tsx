@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Layout } from "@/components/Layout";
 import {
   Box,
@@ -29,6 +30,20 @@ export default function Home() {
   const clickHandler = (e: any) => {
     setTextValue(e.target.textContent);
   };
+
+  const { control, handleSubmit, formState: { errors } } = useForm(
+    {
+      mode: 'all',
+      defaultValues: {phoneNumber:'',password:''}
+    }
+  );
+
+  const submitFunc = (value: any) => {
+    console.log(value);
+  };
+
+
+
   const [showPassword, setShowPassword] = React.useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -83,14 +98,71 @@ export default function Home() {
                     color="gray.700"
                     bg="gray.100"
                   />
-                  <Input type="tel" placeholder="00 000 00 00" w="100%" />
+                  <Controller
+                    name="phoneNumber"
+                    control={control}
+                    rules={{
+                      required: t2("errorMessages.phoneNumber.required"),
+                      validate: (value: string)=> {
+                        if (value.length !== 9) {
+                          return t2("errorMessages.phoneNumber.length");
+                        }
+                        return undefined;
+                      },
+                    }}
+                    render={({field}) => (
+                      <Input 
+                        {...field}
+                        type="tel" 
+                        placeholder="00 000 00 00" 
+                        borderColor="gray.300"
+                        _invalid={{ borderColor: "red.500" }}
+                        isInvalid={!!errors.phoneNumber}
+                        w="100%" 
+                      />
+                    )}
+                    />
                 </InputGroup>
+                {errors?.phoneNumber && (
+                      <Text color="red" fontSize="sm" mt="0.5rem">
+                        {errors?.phoneNumber?.message}
+                      </Text>
+                    )}
               </FormControl>
             </VStack>
             <VStack gap="8px" w="100%">
               <FormControl>
                 <FormLabel color="gray.700">{t2("asanID")}</FormLabel>
-                <Input type="number" w="100%" />
+                <Controller 
+                  name='password'
+                  control={control}
+                      rules={{
+                        required: t2("errorMessages.asanID.required"),
+                        validate: (value: string)=> {
+                          if (value.length !== 6) {
+                            return t2("errorMessages.asanID.length");
+                          }
+                          return undefined;
+                        },
+                      }}
+                      render={({field}) => (
+                        <Input 
+                          {...field}
+                          borderColor="gray.300"
+                          _invalid={{ borderColor: "red.500" }}
+                          isInvalid={!!errors.password}
+                          type="number"
+                          w="100%"
+                        />
+                      )
+                      }
+                />
+
+                      {errors?.password && (
+                      <Text color="red" fontSize="sm" mt="0.5rem">
+                        {errors?.password?.message}
+                      </Text>
+                    )}
               </FormControl>
             </VStack>
           </Box>
@@ -143,7 +215,9 @@ export default function Home() {
           </VStack>
         )}
 
-        <Button colorScheme="white" bg="gray.300" w="100%">
+        <Button 
+          onSubmit={submitFunc}
+          colorScheme="white" bg="gray.300" w="100%">
           {t("actions.login")}
         </Button>
         <Text textAlign="center" w="100%" color="gray.600">

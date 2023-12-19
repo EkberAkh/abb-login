@@ -46,7 +46,7 @@ const forgotPassword = () => {
               name="username"
               control={control}
               rules={{
-                required: "İstifadəçi adı qeyd olunmayıb",
+                required: t2("errorMessages.username.required"),
               }}
               render={({ field }) => (
                 <Input
