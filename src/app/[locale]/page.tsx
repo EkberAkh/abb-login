@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Layout } from "@/components/Layout";
 import {
@@ -18,7 +18,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { NavigationLink } from "../../components/NavigationLink";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function Home() {
@@ -95,14 +95,12 @@ export default function Home() {
         {textValue === "ASAN imza" ? (
           <Box display="flex" flexDirection="column" gap="18px" width="100%">
             <VStack gap="8px" w="100%">
-              <FormControl w="100%" isInvalid={errors?.phoneNumber}>
+              <FormControl w="100%" isInvalid={!!errors?.phoneNumber}>
                 <FormLabel color="gray.700">{t2("phoneNumber")}</FormLabel>
                 <InputGroup w="100%">
-                  <InputLeftAddon
-                    children="+994"
-                    color="gray.700"
-                    bg="gray.100"
-                  />
+                  <InputLeftAddon color="gray.700" bg="gray.100">
+                    +994
+                  </InputLeftAddon>
                   <Controller
                     name="phoneNumber"
                     control={control}
@@ -223,7 +221,9 @@ export default function Home() {
               mt="8px"
               mb="8px"
             >
-              <Link href={"/az/forgotpassword"}>{t2("iforgotPassword")}</Link>
+              <NavigationLink href={"/forgotpassword"}>
+                {t2("iforgotPassword")}
+              </NavigationLink>
             </Text>
           </VStack>
         )}

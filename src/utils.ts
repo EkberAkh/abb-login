@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { NextRequest } from 'next/server'
-import { defaultLocale } from './i18n'
+import { defaultLocale, locales } from './i18n'
+import {createSharedPathnamesNavigation} from 'next-intl/navigation';
 
 const resolveLocale = (req: NextRequest) => {
   const pathname = req.nextUrl.pathname
@@ -14,3 +15,9 @@ const resolveLocale = (req: NextRequest) => {
 }
 
 export { resolveLocale, useTranslations }
+
+ 
+export const localePrefix = 'always'; // Default
+ 
+export const {Link, redirect, usePathname, useRouter,} =
+  createSharedPathnamesNavigation({locales, localePrefix});

@@ -1,26 +1,25 @@
-import { Flex, HStack, Image, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { HStack, Image, Text } from "@chakra-ui/react";
+import { NavigationLink } from "../NavigationLink";
+import { usePathname } from "../../utils";
+import { useCurrentLang } from "../../hooks";
 
 export const Header = () => {
   const langs = ["az", "en", "ru"];
-  const currentPath = usePathname()||'';
+
+  const currentPath = usePathname();
+  const currentLang = useCurrentLang();
+  console.log(currentLang);
 
   return (
     <HStack w="100%" justify="space-between" padding="28px 32px">
       <Image alt="ABB Business Logo" src="/login/images/logo-business.svg" />
       <HStack spacing="16px">
         {langs.map((lang) => (
-          <Link href={`/${lang}`} locale={lang} key={lang}>
+          <NavigationLink href={`${lang}/${currentPath}`} key={lang}>
             <Text
               id={`language-button-${lang}`}
               data-test-id={`language-button-${lang}`}
-              color={
-                currentPath.includes(`/${lang}`) ||
-                (currentPath === "/" && lang === "az")
-                  ? "gray.700"
-                  : "gray.400"
-              }
+              color={currentLang === lang ? "gray.700" : "gray.400"}
               fontWeight="semibold"
               fontSize="sm"
               lineHeight="6"
@@ -29,7 +28,7 @@ export const Header = () => {
             >
               {lang}
             </Text>
-          </Link>
+          </NavigationLink>
         ))}
       </HStack>
     </HStack>

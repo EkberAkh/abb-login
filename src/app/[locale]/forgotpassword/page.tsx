@@ -1,4 +1,5 @@
 "use client";
+
 import { Layout } from "@/components/Layout";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
@@ -8,17 +9,21 @@ import {
   FormLabel,
   Input,
   Button,
-  HStack,
+  FormErrorMessage,
 } from "@chakra-ui/react";
-import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
-const forgotPassword = () => {
-  const t = useTranslations("common");
-  const t2 = useTranslations("onboarding");
-  const { control, handleSubmit, formState: { errors },} = useForm({
+import { NavigationLink } from "@/components/NavigationLink";
+
+const ForgotPassword = () => {
+  const t = useTranslations();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     mode: "all",
     defaultValues: {
       username: "",
@@ -28,39 +33,29 @@ const forgotPassword = () => {
   const submitFunc = (value: any) => {
     console.log(value);
   };
-  
+
   return (
     <Layout>
       <VStack padding="80px" alignItems="start" width="100%">
         <Text mb="32px" fontWeight="700">
-          {t2("iforgotPassword")}
+          {t("onboarding.iforgotPassword")}
         </Text>
         <form style={{ width: "100%" }} onSubmit={handleSubmit(submitFunc)}>
-          <FormControl gap="24px">
+          <FormControl gap="24px" isInvalid={!!errors.username}>
             <FormLabel mb="6px" fontWeight="500">
-            {t2("username")}
+              {t("onboarding.username")}
             </FormLabel>
             <Controller
               name="username"
               control={control}
               rules={{
-                required: t2("errorMessages.username.required"),
+                required: t("onboarding.errorMessages.username.required"),
               }}
               render={({ field }) => (
-                <Input
-                  {...field}
-                  type="text"
-                  borderColor="gray.300"
-                  _invalid={{ borderColor: "red.500" }}
-                  isInvalid={!!errors.username}
-                />
+                <Input {...field} type="text" borderColor="gray.300" />
               )}
             />
-            {errors?.username && (
-              <Text color="red" fontSize="sm" mt="0.5rem">
-                {errors?.username?.message}
-              </Text>
-            )}
+            <FormErrorMessage>{errors?.username?.message}</FormErrorMessage>
             <Button
               type="submit"
               width="100%"
@@ -72,31 +67,27 @@ const forgotPassword = () => {
               fontWeight="500"
               mt="16px"
             >
-              {t("actions.resetPassword")}
+              {t("common.actions.resetPassword")}
             </Button>
           </FormControl>
           <DevTool control={control} />
 
-          <Link href={"/az"}>
+          <NavigationLink href="/">
             <Button
               colorScheme="teal"
               variant="ghost"
               width="100%"
               mt="16px"
-              color="#2058BB"
               padding="10px 24px"
-              fontSize="lg"
+              leftIcon={<ArrowBackIcon width="24px" h="24px" />}
             >
-              <HStack spacing="2">
-                <ArrowBackIcon width="24px" h="24px"/>
-                <Text> {t("actions.backToLogin")}</Text>
-              </HStack>
+              {t("common.actions.backToLogin")}
             </Button>
-          </Link>
+          </NavigationLink>
         </form>
       </VStack>
     </Layout>
   );
 };
 
-export default forgotPassword;
+export default ForgotPassword;
