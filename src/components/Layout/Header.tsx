@@ -4,9 +4,7 @@ import { usePathname } from "next/navigation";
 
 export const Header = () => {
   const langs = ["az", "en", "ru"];
-
   const currentPath = usePathname()||'';
-  console.log(currentPath);
 
   return (
     <HStack w="100%" justify="space-between" padding="28px 32px">
@@ -33,7 +31,6 @@ export const Header = () => {
             </Text>
           </Link>
         ))}
-        
       </HStack>
     </HStack>
   );

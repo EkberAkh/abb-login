@@ -16,21 +16,19 @@ import { DevTool } from "@hookform/devtools";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 const forgotPassword = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const t = useTranslations("common");
+  const t2 = useTranslations("onboarding");
+  const { control, handleSubmit, formState: { errors },} = useForm({
     mode: "all",
     defaultValues: {
       username: "",
     },
   });
+
   const submitFunc = (value: any) => {
     console.log(value);
   };
-  const t = useTranslations("common");
-  const t2 = useTranslations("onboarding");
+  
   return (
     <Layout>
       <VStack padding="80px" alignItems="start" width="100%">
@@ -79,7 +77,7 @@ const forgotPassword = () => {
           </FormControl>
           <DevTool control={control} />
 
-          <Link href={"/az/kobilotp"}>
+          <Link href={"/az"}>
             <Button
               colorScheme="teal"
               variant="ghost"

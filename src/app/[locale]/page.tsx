@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Layout } from "@/components/Layout";
 import {
@@ -15,26 +15,36 @@ import {
   InputLeftAddon,
   InputRightElement,
   IconButton,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function Home() {
-  const currentPath = usePathname() || "";
-  const isAsanImza = /^\/(az|en|ru)$/.test(currentPath);
   const t = useTranslations("common");
   const t2 = useTranslations("onboarding");
   const [textValue, setTextValue] = useState("ASAN imza");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [inputTextValue, setinputTextValue] = useState('');
+  const [inputNumberValue, setInputNumberValue] = useState('');
+
   const clickHandler = (e: any) => {
     setTextValue(e.target.textContent);
   };
 
-  const { control, handleSubmit, formState: { errors } } = useForm(
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  
+
+  const { control, handleSubmit, formState: { errors }, setValue } = useForm(
     {
       mode: 'all',
-      defaultValues: {phoneNumber:'',password:''}
+      defaultValues: {
+        phoneNumber:'',
+        password:''
+      }
     }
   );
 
@@ -42,13 +52,7 @@ export default function Home() {
     console.log(value);
   };
 
-
-
-  const [showPassword, setShowPassword] = React.useState(false);
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-  console.log(textValue);
+  const checkInputTextAndNumberValue = (inputTextValue.length === 8 && inputNumberValue.length === 5)
 
   return (
     <Layout>
@@ -76,9 +80,7 @@ export default function Home() {
           >
             ASAN imza
           </Text>
-
           <Text>/</Text>
-
           <Text
             cursor="pointer"
             color={textValue === "KOBIL OTP" ? "gray.700" : "gray.400"}
@@ -90,7 +92,7 @@ export default function Home() {
         {textValue === "ASAN imza" ? (
           <Box display="flex" flexDirection="column" gap="18px" width="100%">
             <VStack gap="8px" w="100%">
-              <FormControl w="100%">
+              <FormControl w="100%" isInvalid={errors?.phoneNumber }>
                 <FormLabel color="gray.700">{t2("phoneNumber")}</FormLabel>
                 <InputGroup w="100%">
                   <InputLeftAddon
@@ -103,7 +105,7 @@ export default function Home() {
                     control={control}
                     rules={{
                       required: t2("errorMessages.phoneNumber.required"),
-                      validate: (value: string)=> {
+                      validate: (value: string) => {
                         if (value.length !== 9) {
                           return t2("errorMessages.phoneNumber.length");
                         }
@@ -113,21 +115,26 @@ export default function Home() {
                     render={({field}) => (
                       <Input 
                         {...field}
+                      borderLeft="0"
                         type="tel" 
                         placeholder="00 000 00 00" 
                         borderColor="gray.300"
-                        _invalid={{ borderColor: "red.500" }}
-                        isInvalid={!!errors.phoneNumber}
+                        
                         w="100%" 
+                        maxLength={9}
+                        onChange={(e) => {
+                            field.onChange(e);
+                            setinputTextValue(field.value);
+                        }}
                       />
                     )}
                     />
                 </InputGroup>
-                {errors?.phoneNumber && (
-                      <Text color="red" fontSize="sm" mt="0.5rem">
+          
+                      <FormErrorMessage  mt="0.5rem">
                         {errors?.phoneNumber?.message}
-                      </Text>
-                    )}
+                      </FormErrorMessage>
+                
               </FormControl>
             </VStack>
             <VStack gap="8px" w="100%">
@@ -148,21 +155,29 @@ export default function Home() {
                       render={({field}) => (
                         <Input 
                           {...field}
+                          value= {field.value}
                           borderColor="gray.300"
                           _invalid={{ borderColor: "red.500" }}
+                          placeholder="000000"
                           isInvalid={!!errors.password}
                           type="number"
                           w="100%"
+                          onChange={(e) => {
+                            if(e.target.value.length <= 6){
+                              field.onChange(e);
+                              setInputNumberValue(field.value);
+                              
+                            }
+                         
+                          }}
                         />
-                      )
-                      }
+                      )}
                 />
-
-                      {errors?.password && (
-                      <Text color="red" fontSize="sm" mt="0.5rem">
-                        {errors?.password?.message}
-                      </Text>
-                    )}
+                {errors?.password && (
+                  <Text color="red" fontSize="sm" mt="0.5rem">
+                    {errors?.password?.message}
+                  </Text>
+                )}
               </FormControl>
             </VStack>
           </Box>
@@ -178,7 +193,6 @@ export default function Home() {
               <FormLabel mb="6px" fontWeight="500">
                 {t2("username")}
               </FormLabel>
-
               <Input type="text" borderColor="gray.300" />
               <FormLabel mb="8px" mt="16px" fontWeight="500">
                 {t2("password")}
@@ -214,10 +228,9 @@ export default function Home() {
             </Text>
           </VStack>
         )}
-
         <Button 
           onSubmit={submitFunc}
-          colorScheme="white" bg="gray.300" w="100%">
+          colorScheme="white" bg={checkInputTextAndNumberValue ? "gray.600" : "gray.300"} w="100%"   isDisabled = {checkInputTextAndNumberValue ? false : true}>
           {t("actions.login")}
         </Button>
         <Text textAlign="center" w="100%" color="gray.600">
