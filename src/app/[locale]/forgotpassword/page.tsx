@@ -12,10 +12,16 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { useTranslations } from "next-intl";
 import { NavigationLink } from "@/components/NavigationLink";
+import dynamic from "next/dynamic";
 
+const DevTool: React.ComponentType<any> = dynamic(
+  () => import("@hookform/devtools").then((mod) => mod.DevTool),
+  {
+    ssr: false,
+  }
+);
 const ForgotPassword = () => {
   const t = useTranslations();
 
