@@ -26,8 +26,8 @@ export default function Home() {
   const t2 = useTranslations("onboarding");
   const [textValue, setTextValue] = useState("ASAN imza");
   const [showPassword, setShowPassword] = React.useState(false);
-  const [inputTextValue, setinputTextValue] = useState('');
-  const [inputNumberValue, setInputNumberValue] = useState('');
+  const [inputTextValue, setinputTextValue] = useState("");
+  const [inputNumberValue, setInputNumberValue] = useState("");
 
   const clickHandler = (e: any) => {
     setTextValue(e.target.textContent);
@@ -36,23 +36,26 @@ export default function Home() {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  
 
-  const { control, handleSubmit, formState: { errors }, setValue } = useForm(
-    {
-      mode: 'all',
-      defaultValues: {
-        phoneNumber:'',
-        password:''
-      }
-    }
-  );
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm({
+    mode: "all",
+    defaultValues: {
+      phoneNumber: "",
+      password: "",
+    },
+  });
 
   const submitFunc = (value: any) => {
     console.log(value);
   };
 
-  const checkInputTextAndNumberValue = (inputTextValue.length === 8 && inputNumberValue.length === 5)
+  const checkInputTextAndNumberValue =
+    inputTextValue.length === 8 && inputNumberValue.length === 5;
 
   return (
     <Layout>
@@ -92,7 +95,7 @@ export default function Home() {
         {textValue === "ASAN imza" ? (
           <Box display="flex" flexDirection="column" gap="18px" width="100%">
             <VStack gap="8px" w="100%">
-              <FormControl w="100%" isInvalid={errors?.phoneNumber }>
+              <FormControl w="100%" isInvalid={errors?.phoneNumber}>
                 <FormLabel color="gray.700">{t2("phoneNumber")}</FormLabel>
                 <InputGroup w="100%">
                   <InputLeftAddon
@@ -112,66 +115,62 @@ export default function Home() {
                         return undefined;
                       },
                     }}
-                    render={({field}) => (
-                      <Input 
+                    render={({ field }) => (
+                      <Input
                         {...field}
-                      borderLeft="0"
-                        type="tel" 
-                        placeholder="00 000 00 00" 
+                        borderLeft="0"
+                        type="tel"
+                        placeholder="00 000 00 00"
                         borderColor="gray.300"
-                        
-                        w="100%" 
+                        w="100%"
                         maxLength={9}
                         onChange={(e) => {
-                            field.onChange(e);
-                            setinputTextValue(field.value);
+                          field.onChange(e);
+                          setinputTextValue(field.value);
                         }}
                       />
                     )}
-                    />
+                  />
                 </InputGroup>
-          
-                      <FormErrorMessage  mt="0.5rem">
-                        {errors?.phoneNumber?.message}
-                      </FormErrorMessage>
-                
+
+                <FormErrorMessage mt="0.5rem">
+                  {errors?.phoneNumber?.message}
+                </FormErrorMessage>
               </FormControl>
             </VStack>
             <VStack gap="8px" w="100%">
               <FormControl>
                 <FormLabel color="gray.700">{t2("asanID")}</FormLabel>
-                <Controller 
-                  name='password'
+                <Controller
+                  name="password"
                   control={control}
-                      rules={{
-                        required: t2("errorMessages.asanID.required"),
-                        validate: (value: string)=> {
-                          if (value.length !== 6) {
-                            return t2("errorMessages.asanID.length");
-                          }
-                          return undefined;
-                        },
+                  rules={{
+                    required: t2("errorMessages.asanID.required"),
+                    validate: (value: string) => {
+                      if (value.length !== 6) {
+                        return t2("errorMessages.asanID.length");
+                      }
+                      return undefined;
+                    },
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      value={field.value}
+                      borderColor="gray.300"
+                      _invalid={{ borderColor: "red.500" }}
+                      placeholder="000000"
+                      isInvalid={!!errors.password}
+                      type="number"
+                      w="100%"
+                      onChange={(e) => {
+                        if (e.target.value.length <= 6) {
+                          field.onChange(e);
+                          setInputNumberValue(field.value);
+                        }
                       }}
-                      render={({field}) => (
-                        <Input 
-                          {...field}
-                          value= {field.value}
-                          borderColor="gray.300"
-                          _invalid={{ borderColor: "red.500" }}
-                          placeholder="000000"
-                          isInvalid={!!errors.password}
-                          type="number"
-                          w="100%"
-                          onChange={(e) => {
-                            if(e.target.value.length <= 6){
-                              field.onChange(e);
-                              setInputNumberValue(field.value);
-                              
-                            }
-                         
-                          }}
-                        />
-                      )}
+                    />
+                  )}
                 />
                 {errors?.password && (
                   <Text color="red" fontSize="sm" mt="0.5rem">
@@ -228,15 +227,19 @@ export default function Home() {
             </Text>
           </VStack>
         )}
-        <Button 
+        <Button
           onSubmit={submitFunc}
-          colorScheme="white" bg={checkInputTextAndNumberValue ? "gray.600" : "gray.300"} w="100%"   isDisabled = {checkInputTextAndNumberValue ? false : true}>
+          colorScheme="brand"
+          variant="solid"
+          w="100%"
+          isDisabled={checkInputTextAndNumberValue ? false : true}
+        >
           {t("actions.login")}
         </Button>
         <Text textAlign="center" w="100%" color="gray.600">
           {t2("or")}
         </Text>
-        <Button color="gray.800" w="100%">
+        <Button variant="gray" w="100%">
           {t("actions.registration")}
         </Button>
       </VStack>
