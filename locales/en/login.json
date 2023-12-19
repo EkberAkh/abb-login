@@ -1,0 +1,163 @@
+{
+  "title": "ABB Business",
+  "subTitle": "Login",
+  "salaryProject": "Salary project",
+  "search":"Search",
+  "bannerText": "Welcome Our New Internet Bank",
+  "automateSalaryPayments": "Automate salary payments",
+  "asanImza": "ASAN İmza",
+  "phoneNumber": "ASAN İmza mobile number",
+  "asanID": "ASAN İmza user ID",
+  "username": "Username",
+  "firstPassword": "Password",
+  "kobilOTP": "KOBIL OTP",
+  "otp": "OTP",
+  "checkKYC":"Your request is being processed",
+  "customerNoSuccess":"Dear Customer, information about the registration process will be sent to You by mail soon.",
+  "backToLogin": "Back to login",
+  "beCustomer": "Registration",
+  "or": "or",
+  "forgotPassword": {
+    "forgotPasswordForm": {
+      "heading": "Forgot password",
+      "email_label": "E-mail",
+      "description": "Enter your username and you will receive an e-mail with password reset link.",
+      "successDescription": "Please, check your {{maskedEmailAddress}} e-mail address.",
+      "resetPasswordButton": "Reset password",
+      "sentToMailbox": "Reset link has sent to your mailbox",
+      "sentToEmail": "If the mentioned user exists, a link will be sent to your email."
+    },
+    "resetPasswordForm": {
+      "heading": "Reset password",
+      "newPassword": "New password",
+      "repeatPassword": "Repeat password",
+      "errorMessage": "<0>Your new password should be minimum</0> <1>12 characters long</1>. <0>Your new password should contain numbers, upper and lowercase letters and specific symbols (&,*,# etc).</0>",
+      "confirmButton": "Confirm"
+    },
+    "passwordResetAlert": {
+      "heading": "Password has been reset",
+      "description": "You can enter the system using your new password."
+    },
+    "resetFailoryPage": {
+      "heading": "Link is not active",
+      "description": "The provided link can be used only once and during 24 hours time interval. Please get a new link.",
+      "getANewLink": "Get a new link",
+      "token-not-found": "Token not found"
+    }
+  },
+  "organization": {
+    "choose": "Select to continue",
+    "message": "Select a company to login"
+  },
+  "code": "Verification code",
+  "howToGetAsanImza": "How to get ASAN İmza?",
+  "howToGetOldIB": "Old İnternet Banking",
+  "info": "By proceeding, I accept the IBAR Services Terms and confirm that I have read IBARS's Privacy Notice.",
+  "asanImzaTitle": "ASAN Imza confirmation",
+  "verificationMessage": "Please accept the request sent to your phone. Compare the verification code of the query to be the same as the code below.",
+  "errorMessages": {
+    "phoneNumber": {
+      "required": "Please enter the mobile number",
+      "matches": "Please enter the valid mobile number"
+    },
+    "asanID": {
+      "required": "Please enter the User ID",
+      "matches": "User ID must contain 6 digits"
+    },
+    "username": {
+      "required": "Username not added",
+      "matches": "Username is not correct"
+    },
+    "firstPassword": {
+      "required": "Password not added",
+      "matches": "Password is not correct"
+    },
+    "otp": {
+      "required": "OTP not added",
+      "matches": "OTP must be at least 8 symbols (digits only)"
+    },
+    "email": {
+      "required": "E-mail not added",
+      "matches": "E-mail is not correct"
+    },
+    "newPassword": {
+      "required": "New password not added",
+      "matches": "New password is not correct"
+    },
+    "repeatPassword": {
+      "required": "Repeat password not added",
+      "matches": "Passwords must be match"
+    },
+    "auth": "User authentication failed. Please try again.",
+    "blank": "Username or password cannot be blank.",
+    "incorrectOTP": "Incorrect OTP. Please try again.",
+    "blankOTP": "OTP cannot be blank."
+  },
+  "errors": {
+    "3005": "System error. Please try again later.",
+    "2031": "ASAN İmza service suspended due to non-payment of the monthly subscription fee!",
+    "2018": "Authentication certificate is not valid.",
+    "1000": "Internal error.",
+    "1106": "Invalid method parameter(s).",
+    "2013": "Authentication certificate is not found.",
+    "2020": "Signing certificate is not found.",
+    "2017": "Given phone number and user ID are not related.",
+    "1002": "Service is overloaded at the moment. Try again later.",
+    "2021": "Signing certificate with given identifier is not valid.",
+    "2004": "Given phone number or User ID is not correct. Please enter valid information",
+    "3023": "System error. Please try again later.",
+    "3022": "System error. Please try again later.",
+    "3024": "System error. Please try again later.",
+    "3011": "System error. Please try again later.",
+    "3010": "System error. Please try again later.",
+    "3025": "System error. Please try again later.",
+    "3020": "System error. Please try again later.",
+    "3012": "System error. Please try again later.",
+    "3008": "System error. Please try again later.",
+    "3018": "System error. Please try again later.",
+    "3016": "System error. Please try again later.",
+    "3014": "System error. Please try again later.",
+    "3019": "System error. Please try again later.",
+    "3013": "System error. Please try again later.",
+    "3015": "System error. Please try again later.",
+    "3017": "System error. Please try again later.",
+    "3009": "System error. Please try again later.",
+    "3100": "System error. Please try again later.",
+    "3006": "System error. Please try again later.",
+    "3003": "System error. Please try again later.",
+    "3007": "System error. Please try again later.",
+    "3001": "System error. Please try again later.",
+    "3002": "System error. Please try again later.",
+    "3004": "System error. Please try again later.",
+    "500": "System error. Please try again later.",
+    "451": "System error. Please try again later.",
+    "UNKNOWN": "System error. Please try again later.",
+    "AUTH_CERT_IS_NOT_VALID_ERROR": "Authentication certificate is not valid.",
+    "INTERNAL_ERROR": "Internal error.",
+    "INVALID_PARAMS_ERROR": "Invalid method parameter(s).",
+    "NO_AUTH_CERT_ERROR": "Authentication certificate is not found.",
+    "NO_SIGN_CERT_ERROR": "Signing certificate is not found.",
+    "PHONE_NUMBER_AND_PERSONAL_CODE_NOT_RELATED_ERROR": "Given phone number and user ID are not related.",
+    "SERVICE_OVERLOADED_ERROR": "Service is overloaded at the moment. Try again later.",
+    "SIGN_CERT_IS_NOT_VALID_ERROR": "Signing certificate with given identifier is not valid.",
+    "UNKNOWN_PHONE_NUMBER_ERROR": "Given phone number is unknown. Make sure you have entered the correct phone number.",
+    "EXPIRED_TRANSACTION": "Request timeout.",
+    "NOT_VALID": "Signature is not valid.",
+    "PHONE_ABSENT": "The number is inaccessible.",
+    "SENDING_ERROR": "Process could not be started.",
+    "SIM_ERROR": "SIM Card error occurred.",
+    "USER_CANCEL": "The process cancelled by the subscriber.",
+    "CERTIFICATE_NOT_FOUND": "Not found valid signing certificates",
+    "SID_NOT_FOUND": "Asan imza history not found with such sid",
+    "TOKEN_NOT_FOUND": "Token not found!",
+    "TOKEN_REFRESH_COUNT_EXCEEDED": "Token refresh count exceeded!",
+    "USER_NOT_FOUND": "The mentioned user does not exist. Please, contact the ABB's branch for creating the user.",
+    "DIRECTOR_USER_NOT_FOUND":"Dear Customer, you are not registered in the system. You can register in the IB, by selecting the 'Registration' button on the main page.",
+    "SEND_TO_EMAIL": "Yazdığınız məlumatlara uyğun istfadəçi mövcuddursa, link mailinizə göndərildi",
+    "USERNAME_OR_PASSWORD_IS_WRONG": "Username or password is wrong!",
+    "EXCEEDED_REFRESH_COUNT": "Exceeded refresh token count limit",
+    "USER_DEACTIVATED": "User is deactivated",
+    "INVALID_REFRESH_TOKEN": "Refresh token is invalid",
+    "ONBOARDING_FAIL":"Dear Customer, information about the registration process has been sent to You via email. Please, check your email address."
+  }
+}

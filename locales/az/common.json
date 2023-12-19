@@ -1,12 +1,9 @@
 {
-  "username": "İstifadəçi adı",
   "actions": {
-    "registration": "Qeydiyyat",
     "back": "Geriyə",
     "prev": "Əvvəlki",
     "next": "Növbəti",
     "reset": "Yenilə",
-    "resetPassword":"Şifrəni yenilə",
     "close": "Bağla",
     "login": "Davam et",
     "logout": "Çıxış",
@@ -38,7 +35,7 @@
     "download_pdf": "PDF yüklə",
     "print": "Çap et",
     "date": "Tarix",
-    "select": "Seç",
+    "select": "Seçin",
     "delete_selected": "{{num}} elementi sil",
     "edit_selected": "{{num}} elementi redaktə et",
     "backToLogin": "Girişə qayıdın",
@@ -57,8 +54,7 @@
     "order": "Müraciət et"
   },
   "errors": {
-    "voenNextPin2":"Hörmətli Müştəri, hal-hazırda texniki işlər aparılır. Zəhmət olmasa, biraz sonra yenidən qeydiyyatdan keçməyə cəhd edərdiniz",
-    "one_user_more_cif":" Hörmətli Müştəri, müştəri məlumatlarınız üzrə düzəliş gərəklidir. Məsələ ilə bağlı ABB-yə məxsus filial və ya şöbəyə müraciət etməyiniz xahiş olunur.",
+    "NOT_FOUND_CUSTOMER":"İstifadəçi tapılmadı",
     "system": "Sistemdə xəta baş verdi",
     "404": "Səhifə tapılmadı",
     "permissionError": "Sorğu zamanı xəta baş verdi. Zəhmət olmasa, səhifəni yeniləyin.",

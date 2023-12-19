@@ -6,7 +6,7 @@ export const locales = [defaultLocale, 'en', 'ru'];
 
 export default getRequestConfig(async ({locale}) => {
   const common = (await import(`../locales/${locale}/common.json`)).default
-  const onboarding = (await import(`../locales/${locale}/onboarding.json`)).default
+  const login = (await import(`../locales/${locale}/login.json`)).default
   return ({
-  messages: {common, onboarding}
+  messages: {common, login}
 })});

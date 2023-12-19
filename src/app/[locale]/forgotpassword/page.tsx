@@ -22,6 +22,7 @@ const DevTool: React.ComponentType<any> = dynamic(
     ssr: false,
   }
 );
+
 const ForgotPassword = () => {
   const t = useTranslations();
 
@@ -44,18 +45,18 @@ const ForgotPassword = () => {
     <Layout>
       <VStack padding="80px" alignItems="start" width="100%">
         <Text mb="32px" fontWeight="700">
-          {t("onboarding.iforgotPassword")}
+          {t("login.iforgotPassword")}
         </Text>
         <form style={{ width: "100%" }} onSubmit={handleSubmit(submitFunc)}>
           <FormControl gap="24px" isInvalid={!!errors.username}>
             <FormLabel mb="6px" fontWeight="500">
-              {t("onboarding.username")}
+              {t("login.username")}
             </FormLabel>
             <Controller
               name="username"
               control={control}
               rules={{
-                required: t("onboarding.errorMessages.username.required"),
+                required: t("login.errorMessages.username.required"),
               }}
               render={({ field }) => (
                 <Input {...field} type="text" borderColor="gray.300" />
