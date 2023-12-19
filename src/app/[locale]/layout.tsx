@@ -26,8 +26,7 @@ export default function RootLayout({ children, params: { locale } }: IProps) {
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-
-        <Providers>{children}</Providers>
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>
