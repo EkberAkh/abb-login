@@ -62,11 +62,14 @@
   "sign": "İmzala",
   "verificationMessage": "Zəhmət olmasa, telefonunuza göndərilmiş sorğunu qəbul edin",
   "errorMessages": {
+    "username": {"required": "İstifadəçi adı qeyd olunmayıb"},
     "phoneNumber": {
+      "length": "9 simvol qeyd olunmalıdır",
       "required": "Mobil nömrə əlavə olunmalıdır",
       "matches": "Nömrə formatı düzgün deyil"
     },
     "asanID": {
+      "length": "6 simvol qeyd olunmalıdır",
       "required": "Asan ID qeyd olunmayıb",
       "matches": "Asan ID düzgün deyil"
     },
