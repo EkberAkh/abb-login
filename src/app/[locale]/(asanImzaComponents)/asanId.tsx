@@ -27,7 +27,7 @@ const AsanID = () => {
                   required: t("login.errorMessages.asanID.required"),
                   validate: (value: string) => {
                     if (value.length !== 6) {
-                      return t("login.errorMessages.asanID.length");
+                      return t("login.errorMessages.asanID.matches");
                     }
                     return undefined;
                   },
