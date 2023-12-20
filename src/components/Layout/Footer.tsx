@@ -1,9 +1,11 @@
 import { Layout } from "@/components/Layout";
 import { HStack, Image, Link } from "@chakra-ui/react";
+import { useTranslations } from "next-intl";
 
 import React from "react";
 
 const Footer = () => {
+  const t = useTranslations();
   return (
     <HStack
       w="100%"
@@ -14,7 +16,7 @@ const Footer = () => {
     >
       <Image src="/login/images/asan-logo.svg" />
       <Link fontSize="14px" color="gray.500" fontWeight="400">
-        Köhnə İB-ə keçid
+        {t("login.howToGetAsanImza")}
       </Link>
     </HStack>
   );
