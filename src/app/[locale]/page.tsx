@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Layout } from "@/components/Layout";
+import { useTranslations } from "next-intl";
+import { NavigationLink } from "../../components/NavigationLink";
+import { usePathname } from "next/navigation";
 import {
   Box,
   HStack,
@@ -13,28 +16,19 @@ import {
   Button,
   InputGroup,
   InputLeftAddon,
-  InputRightElement,
-  IconButton,
   FormErrorMessage,
   Link,
 } from "@chakra-ui/react";
-import { useTranslations } from "next-intl";
-import { NavigationLink } from "../../components/NavigationLink";
-import { usePathname } from "next/navigation";
+
 
 export default function Home() {
-  const t = useTranslations("common");
-  const t2 = useTranslations("login");
-  const [showPassword, setShowPassword] = React.useState(false);
+  const t = useTranslations();
   const [inputTextValue, setinputTextValue] = useState("");
   const [inputNumberValue, setInputNumberValue] = useState("");
 
-
   const {
     control,
-    handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm({
     mode: "all",
     defaultValues: {
@@ -46,11 +40,8 @@ export default function Home() {
   const submitFunc = (value: any) => {
     console.log(value);
   };
-
-  const checkInputTextAndNumberValue =
-    inputTextValue.length === 8 && inputNumberValue.length === 5;
+  const checkInputTextAndNumberValue = inputTextValue.length === 8 && inputNumberValue.length === 5;
   const pathname = usePathname() || "";
-  console.log(pathname);
   const isAsanImzaPath =  /^(\/az|\/en|\/ru)$/.test(pathname);
 
   return (
@@ -74,7 +65,6 @@ export default function Home() {
         >
           <Text
             cursor="pointer"
-        
             color={isAsanImzaPath ? "gray.700" : "gray.400"}
           >
             ASAN imza
@@ -84,7 +74,6 @@ export default function Home() {
             <Text
               color= "gray.400"
               cursor="pointer"
-        
             >
               KOBIL OTP
             </Text>
@@ -94,7 +83,7 @@ export default function Home() {
         <Box display="flex" flexDirection="column" gap="18px" width="100%">
           <VStack gap="8px" w="100%">
             <FormControl w="100%" isInvalid={!!errors?.phoneNumber}>
-              <FormLabel color="gray.700">{t2("phoneNumber")}</FormLabel>
+              <FormLabel color="gray.700">{t("login.phoneNumber")}</FormLabel>
               <InputGroup w="100%">
                 <InputLeftAddon color="gray.700" bg="gray.100">
                   +994
@@ -103,10 +92,10 @@ export default function Home() {
                   name="phoneNumber"
                   control={control}
                   rules={{
-                    required: t2("errorMessages.phoneNumber.required"),
+                    required: t("login.errorMessages.phoneNumber.required"),
                     validate: (value: string) => {
                       if (value.length !== 9) {
-                        return t2("errorMessages.phoneNumber.length");
+                        return t("login.errorMessages.phoneNumber.length");
                       }
                       return undefined;
                     },
@@ -136,15 +125,15 @@ export default function Home() {
           </VStack>
           <VStack gap="8px" w="100%">
             <FormControl>
-              <FormLabel color="gray.700">{t2("asanID")}</FormLabel>
+              <FormLabel color="gray.700">{t("login.asanID")}</FormLabel>
               <Controller
                 name="password"
                 control={control}
                 rules={{
-                  required: t2("errorMessages.asanID.required"),
+                  required: t("login.errorMessages.asanID.required"),
                   validate: (value: string) => {
                     if (value.length !== 6) {
-                      return t2("errorMessages.asanID.length");
+                      return t("login.errorMessages.asanID.length");
                     }
                     return undefined;
                   },
@@ -187,10 +176,10 @@ export default function Home() {
           {t("actions.login")}
         </Button>
         <Text textAlign="center" w="100%" color="gray.600">
-          {t2("or")}
+          {t("login.or")}
         </Text>
         <Button variant="gray" w="100%">
-          {t2("beCustomer")}
+          {t("login.beCustomer")}
         </Button>
       </VStack>
     </Layout>
