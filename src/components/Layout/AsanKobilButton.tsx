@@ -2,7 +2,11 @@ import { Box, Button, Text } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-const AsanKobilButton = () => {
+interface AsanKobilButtonProps {
+  onClick: () => void;
+  isDisabled: boolean;
+}
+const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({ onClick, isDisabled }) => {
   const t = useTranslations();
 
   const [inputTextValue, setinputTextValue] = useState("");
@@ -16,13 +20,14 @@ const AsanKobilButton = () => {
   return (
     <Box width="100%">
       <Button
+      onClick={onClick}
         padding="10px 24px"
         lineHeight="28px"
         onSubmit={submitFunc}
         colorScheme="brand"
         variant="solid"
         w="100%"
-        isDisabled={checkInputTextAndNumberValue ? false : true}
+        isDisabled={isDisabled}
       >
         {t("common.actions.login")}
       </Button>
