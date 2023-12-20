@@ -32,7 +32,7 @@ const FormPhone = () => {
                     required: t("login.errorMessages.phoneNumber.required"),
                     validate: (value: string) => {
                       if (value.length !== 9) {
-                        return t("login.errorMessages.phoneNumber.length");
+                        return t("login.errorMessages.phoneNumber.matches");
                       }
                       return undefined;
                     },

@@ -1,28 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import React from "react";
 import { Layout } from "@/components/Layout";
 import { useTranslations } from "next-intl";
-import { NavigationLink } from "../../components/NavigationLink";
-import { usePathname } from "next/navigation";
-import {
-  Box,
-  HStack,
-  VStack,
-  Text,
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  InputGroup,
-  InputLeftAddon,
-  FormErrorMessage,
-  Link,
-} from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import AsanKobilButton from "@/components/Layout/AsanKobilButton";
-import AsanID from "./(asanImzaComponents)/asanId";
+import AsanID from "../../components/Layout/(asanImzaComponents)/asanId";
 import AsanKobilLink from "@/components/Layout/asanKobilLink";
-import FormPhone from "./(asanImzaComponents)/formPhone";
+import FormPhone from "../../components/Layout/(asanImzaComponents)/formPhone";
 
 export default function Home() {
   const t = useTranslations();
