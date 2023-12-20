@@ -1,23 +1,9 @@
 "use client";
 import { Layout } from "@/components/Layout";
 import AsanKobilButton from "@/components/Layout/AsanKobilButton";
-import { NavigationLink } from "@/components/NavigationLink";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import {
-  HStack,
-  VStack,
-  Text,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputRightElement,
-  IconButton,
-
-} from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import FormUsername from "./formUsername";
@@ -30,7 +16,7 @@ const KobilOtp = () => {
 
   const [inputTextValue, setinputTextValue] = useState("");
   const [inputNumberValue, setInputNumberValue] = useState("");
-  
+
   const {
     control,
     handleSubmit,
@@ -43,16 +29,12 @@ const KobilOtp = () => {
       password: "",
     },
   });
-
-
-
   const checkInputTextAndNumberValue =
     inputTextValue.length === 8 && inputNumberValue.length === 5;
 
-  
   const pathname = usePathname() || "";
   console.log(pathname);
-  
+
   return (
     <Layout>
       <VStack
@@ -63,7 +45,7 @@ const KobilOtp = () => {
         marginX="auto"
         maxWidth="480px"
       >
-        <AsanKobilLink/>
+        <AsanKobilLink />
         <VStack
           marginY="0"
           marginX="auto"
@@ -71,11 +53,11 @@ const KobilOtp = () => {
           alignItems="start"
           width="100%"
         >
-          <FormUsername/>
-          <FormPass/>
-          <IForgotPass/>
+          <FormUsername />
+          <FormPass />
+          <IForgotPass />
         </VStack>
-        <AsanKobilButton/>
+        <AsanKobilButton />
       </VStack>
     </Layout>
   );
