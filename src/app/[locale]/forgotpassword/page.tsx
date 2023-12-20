@@ -79,7 +79,7 @@ const ForgotPassword = () => {
           </FormControl>
           <DevTool control={control} />
 
-          <NavigationLink href="/">
+          <NavigationLink href="/kobilotp">
             <Button
               colorScheme="gray"
               variant="ghost"

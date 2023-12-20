@@ -125,6 +125,7 @@ const KobilOtp = () => {
               />
               <InputRightElement>
                 <IconButton
+                variant="gray"
                   borderWidth="1px 1px 1px 0px"
                   borderColor="gray.300"
                   backgroundColor="white"
