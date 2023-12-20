@@ -1,9 +1,13 @@
 import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-const AsanID = () => {
+interface AsanIDProps {
+  setAsanId: (id: string) => void;
+}
+
+const AsanID: React.FC<AsanIDProps> = ({ setAsanId }) => {
   const t = useTranslations();
   const {
     control,
@@ -11,17 +15,23 @@ const AsanID = () => {
   } = useForm({
     mode: "all",
     defaultValues: {
-      phoneNumber: "",
-      password: "",
+      asanId: "",
     },
   });
 
-  const [inputNumberValue, setInputNumberValue] = useState("");
+  // Update: Adjusted to use a local state and useEffect to update the parent state
+  const [localAsanId, setLocalAsanId] = useState("");
+
+  // Whenever localAsanId changes, update the parent state
+  useEffect(() => {
+    setAsanId(localAsanId);
+  }, [localAsanId, setAsanId]);
+
   return (
     <FormControl>
       <FormLabel color="gray.700">{t("login.asanID")}</FormLabel>
       <Controller
-        name="password"
+        name="asanId"
         control={control}
         rules={{
           required: t("login.errorMessages.asanID.required"),
@@ -35,25 +45,25 @@ const AsanID = () => {
         render={({ field }) => (
           <Input
             {...field}
-            value={field.value}
             borderColor="gray.300"
             _invalid={{ borderColor: "red.500" }}
             placeholder="000000"
-            isInvalid={!!errors.password}
+            isInvalid={!!errors.asanId}
             type="number"
             w="100%"
+            maxLength={6} // Setting the maxLength here
             onChange={(e) => {
               if (e.target.value.length <= 6) {
                 field.onChange(e);
-                setInputNumberValue(field.value);
+                setLocalAsanId(e.target.value);
               }
             }}
           />
         )}
       />
-      {errors?.password && (
+      {errors?.asanId && (
         <Text color="red" fontSize="sm" mt="0.5rem">
-          {errors?.password?.message}
+          {errors?.asanId?.message}
         </Text>
       )}
     </FormControl>
