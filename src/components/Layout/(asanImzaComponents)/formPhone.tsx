@@ -27,7 +27,7 @@ const FormPhone: React.FC<FormPhoneProps> = ({ setPhone }) => {
     <FormControl w="100%" isInvalid={!!errors?.phoneNumber}>
       <FormLabel color="gray.700">{t("login.phoneNumber")}</FormLabel>
       <InputGroup w="100%">
-        <InputLeftAddon color="gray.700" bg="gray.100">
+        <InputLeftAddon color="gray.700" bg="gray.100" borderRight="0">
           +994
         </InputLeftAddon>
         <Controller
