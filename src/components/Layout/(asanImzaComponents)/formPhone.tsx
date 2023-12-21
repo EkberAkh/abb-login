@@ -15,7 +15,7 @@ const FormPhone: React.FC<FormPhoneProps> = ({ setPhone }) => {
     mode: "all",
     defaultValues: {
       phoneNumber: "",
-      password: "",  // Ensure you need this for the FormPhone component
+      password: "",  
     },
   });
 
@@ -46,14 +46,16 @@ const FormPhone: React.FC<FormPhoneProps> = ({ setPhone }) => {
             <Input
               {...field}
               borderLeft="0"
+              borderTopLeftRadius="0"
+              borderBottomLeftRadius="0"
               type="tel"
               placeholder="00 000 00 00"
               borderColor="gray.300"
               w="100%"
               maxLength={9}
               onChange={(e) => {
-                field.onChange(e); // react-hook-form's onChange
-                handlePhoneChange(e); // Custom handler to update parent state
+                field.onChange(e);
+                handlePhoneChange(e);
               }}
             />
           )}
@@ -68,3 +70,26 @@ const FormPhone: React.FC<FormPhoneProps> = ({ setPhone }) => {
 };
 
 export default FormPhone;
+
+
+{/* <InputMask
+{...field}
+mask="99 999 99 99"
+maskChar=" "
+alwaysShowMask
+type="tel"
+placeholder="99 999 99 99"  
+style={{
+  border:"1px solid rgb(159, 168, 178)",
+  borderRadius: "5px",
+  borderTopLeftRadius:"0",
+  borderBottomLeftRadius:"0",
+  borderLeft:"0",
+  width: '100%',
+}}
+maxLength={20}
+onChange={(e) => {
+  field.onChange(e); // react-hook-form's onChange
+  setPhone(e.target.value.replace(/\s/g, '')); // Custom handler to update parent state
+}}
+/> */}

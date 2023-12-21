@@ -1,16 +1,8 @@
 "use client";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import {
-  Flex,
-  CloseButton,
-  Spacer,
-  Container,
-  Text,
-  Center,
-  Select,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, CloseButton, Spacer, Container, Text, Center, Select, Button } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 
 type Organization = {
@@ -22,9 +14,8 @@ export default function Organizations() {
 const router = useRouter()
   const [organization, setOrganization] = useState<Organization[] | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
-const rejectOrganization = ()=>{
-  router.back()
-}
+  const t = useTranslations() || "";
+
   useEffect(() => {
     const getOrganizations = async () => {
       try {
@@ -45,18 +36,23 @@ const rejectOrganization = ()=>{
   const handleInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setInputValue(event.target.value);
   };
-
+  
+  const rejectOrganization = ()=>{
+    router.back()
+  }
+  
   return (
     <>
       <Flex>
         <Spacer />
-        <CloseButton size="lg" m="30px" />
+        <CloseButton size="lg" m="30px" onClick={rejectOrganization}/>
       </Flex>
       <Container justifyContent="center" alignItems="center" h="100%">
         <Center h="700px">
           <Flex flexDirection="column" gap="30px">
             <Text fontWeight="bold" fontSize="35px">
-              Davam etmək üçün seçin
+              {t("login.organization.choose")}
+
             </Text>
             <Select
               value={inputValue}
@@ -70,9 +66,9 @@ const rejectOrganization = ()=>{
                 ))}
             </Select>
             <Button bg="blue.500" isDisabled={!inputValue.trim()}>
-              Davam et
+            {t("login.organization.choose")}
             </Button>
-            <Button onClick={rejectOrganization} bg="gray.100">Imtina et</Button>
+            <Button onClick={rejectOrganization} bg="gray.100">{t("login.cancel")}</Button>
           </Flex>
         </Center>
       </Container>

@@ -5,10 +5,8 @@ import { useCurrentLang } from "../../hooks";
 
 export const Header = () => {
   const langs = ["az", "en", "ru"];
-
   const currentPath = usePathname();
   const currentLang = useCurrentLang();
-  console.log(currentPath);
 
   return (
     <HStack w="100%" justify="space-between" padding="28px 32px">

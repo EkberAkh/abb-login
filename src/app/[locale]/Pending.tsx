@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Corrected import for useRouter
-import {
-  Box,
-  Container,
-  Heading,
-  Progress,
-  Text,
-  Button,
-  Image,
-  Stack,
-  CloseButton,
-  VStack,
+import { usePathname, useRouter } from "next/navigation"; // Corrected import for useRouter
+import { Box, Container, Heading, Progress, Text, Button, Image, Stack, CloseButton, VStack,
 } from "@chakra-ui/react";
+import { useTranslations } from "next-intl";
 
 interface PendingProps {
   sid: string | null;
@@ -19,24 +10,10 @@ interface PendingProps {
 }
 
 const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
-  const [timeLeft, setTimeLeft] = useState(10); // 10 seconds countdown
-  const [progress, setProgress] = useState(0); // Progress bar value
-
-  const router = useRouter(); // Initialize useRouter
-
-  useEffect(() => {
-    // Countdown timer logic
-    if (timeLeft > 0) {
-      const timerId = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-        setProgress((prevProgress) => prevProgress + 10); 
-      }, 1000);
-
-      return () => clearTimeout(timerId);
-    } else {
-      // Handle completion of countdown if needed
-    }
-  }, [timeLeft]);
+  const [progressValue, setProgressValue] = useState(0);
+  const router = useRouter();
+  const currentPath = usePathname();
+  const t = useTranslations() || "";
 
   useEffect(() => {
     const checkStatus = async () => {
@@ -48,11 +25,8 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
         const data = await response.json();
-
-        // Redirect to /organizations if the response is OK
-        router.push("/az/organizations");
+        router.push(`${currentPath}/organizations`);
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
       }
@@ -61,19 +35,33 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
     checkStatus();
   }, [sid, router]);
 
-  const rejectHandler = () => {
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgressValue((prevValue) => Math.min(prevValue + 100 / 1000, 100));
+    }, 10);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const clickCloseOrganizationHandler = () => {
+    router.back();
+  };
+
+  const clickHandler = () => {
     router.back();
   };
 
   return (
     <Stack position="relative">
       <CloseButton
+        onClick={() => clickCloseOrganizationHandler}
         position="absolute"
         right="24px"
         top="24px"
         background="#EDF2F7"
         _hover={{ backgroundColor: "gray.200" }}
-        onClick={rejectHandler}
       />
       <Container
         as="div"
@@ -95,7 +83,7 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
           fontWeight="600"
           lineHeight="30px"
         >
-          ASAN İmza təsdiqi
+          {t("login.asanImzaTitle")}
         </Heading>
         <Text
           textAlign="center"
@@ -104,20 +92,9 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
           lineHeight="24px"
           color="rgba(0, 0, 0, 0.50)"
         >
-          Telefonunuza daxil olan kodu aşağıdakı kodu ilə eyni olmasını müqayisə
-          edin və ASAN PIN1 ilə təsdiqləyin.
+          {t("login.verificationMessage")}
         </Text>
         <Box border="1px solid #E4E4E4" borderRadius="12px">
-          <Progress
-            color="#2058BB"
-            size="xs"
-            position="absolute"
-            left="0"
-            right="0"
-            bottom="0"
-            height="7px"
-            value={progress}
-          />
           <Box as="div" p="24px" textAlign="center">
             <Text
               color="rgba(0, 0, 0, 0.50)"
@@ -126,7 +103,7 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
               lineHeight="20px"
               mb="4px"
             >
-              Yoxlama kodu
+              {t("login.code")}
             </Text>
             <Text
               color="#000"
@@ -134,18 +111,19 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
               fontWeight="600"
               lineHeight="32px"
             >
-             {verifCode}
+              {verifCode}
             </Text>
           </Box>
+          <Progress value={progressValue} borderRadius="full" />
         </Box>
         <Button
-          onClick={rejectHandler}
           colorScheme="white"
           color="black"
           w="100%"
+          onClick={clickHandler}
           _hover={{ backgroundColor: "gray.100" }}
         >
-          İmtina et
+          {t("login.cancel")}
         </Button>
       </Container>
     </Stack>
