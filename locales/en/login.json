@@ -159,5 +159,6 @@
     "USER_DEACTIVATED": "User is deactivated",
     "INVALID_REFRESH_TOKEN": "Refresh token is invalid",
     "ONBOARDING_FAIL":"Dear Customer, information about the registration process has been sent to You via email. Please, check your email address."
-  }
+  },
+  "cancel":"Cancel"
 }

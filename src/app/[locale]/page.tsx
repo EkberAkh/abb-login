@@ -1,14 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Box,
-  VStack,
-  CloseButton,
-} from "@chakra-ui/react";
+import {Alert, AlertDescription, AlertIcon, Box, VStack, CloseButton } from "@chakra-ui/react";
 import AsanKobilButton from "@/components/Layout/AsanKobilButton";
 import AsanID from "../../components/Layout/(asanImzaComponents)/asanId";
 import AsanKobilLink from "@/components/Layout/asanKobilLink";
@@ -18,14 +11,12 @@ import Pending from "./Pending";
 
 export default function Home() {
   const [sid, setSid] = useState(null);
-  const [verifCode, setVerifCode] = useState(null);
   const [isErr, setIsErr] = useState(false);
   const [isLoading, setisLoading] = useState(false);
+  const [verifCode, setVerifCode] = useState(null);
   const [phone, setPhone] = useState("");
   const [asanId, setAsanId] = useState("");
   const t = useTranslations() || "";
-
-
 
   const onClose = () => {
     setIsErr(false);

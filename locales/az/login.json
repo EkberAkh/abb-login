@@ -160,5 +160,6 @@
     "USER_DEACTIVATED": "İstifadəçi deaktivdir",
     "INVALID_REFRESH_TOKEN": " Yalnış açar söz",
     "ONBOARDING_FAIL":"Hörmətli Müştəri, qeydiyyat prosesi ilə bağlı məlumat Sizə mail vasitəsi ilə göndərilmişdir. Xahiş olunur, e-poçt ünvanınızı yoxlayardınız."
-  }
+  },
+  "cancel":"İmtina et"
 }
