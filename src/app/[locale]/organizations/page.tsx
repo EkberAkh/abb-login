@@ -10,6 +10,7 @@ import {
   Select,
   Button,
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 
 type Organization = {
@@ -18,10 +19,12 @@ type Organization = {
 };
 
 export default function Organizations() {
-
+const router = useRouter()
   const [organization, setOrganization] = useState<Organization[] | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
-
+const rejectOrganization = ()=>{
+  router.back()
+}
   useEffect(() => {
     const getOrganizations = async () => {
       try {
@@ -56,7 +59,6 @@ export default function Organizations() {
               Davam etmək üçün seçin
             </Text>
             <Select
-              placeholder="Axtar "
               value={inputValue}
               onChange={handleInputChange}
             >
@@ -70,7 +72,7 @@ export default function Organizations() {
             <Button bg="blue.500" isDisabled={!inputValue.trim()}>
               Davam et
             </Button>
-            <Button bg="gray.100">Imtina et</Button>
+            <Button onClick={rejectOrganization} bg="gray.100">Imtina et</Button>
           </Flex>
         </Center>
       </Container>
