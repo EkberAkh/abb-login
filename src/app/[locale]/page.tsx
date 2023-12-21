@@ -18,6 +18,7 @@ import Pending from "./Pending";
 
 export default function Home() {
   const [sid, setSid] = useState(null);
+  const [verifCode, setVerifCode] = useState(null);
   const [isErr, setIsErr] = useState(false);
   const [isLoading, setisLoading] = useState(false);
   const [phone, setPhone] = useState("");
@@ -53,13 +54,14 @@ export default function Home() {
       const responseData = await response.json();
       setisLoading(true);
       setSid(responseData.sid);
+      setVerifCode(responseData.verificationCode)
     } catch (error) {
       console.error("Error making the request:", error);
       setIsErr(true);
     }
   };
   if (isLoading) {
-    return <Pending sid={sid} />;
+    return <Pending sid={sid} verifCode={verifCode} />;
   } else {
     return (
       <Layout>
