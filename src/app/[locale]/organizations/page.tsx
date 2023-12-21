@@ -1,5 +1,4 @@
 "use client";
-
 import React, { ChangeEvent, useEffect, useState } from "react";
 import {
   Flex,
@@ -10,37 +9,36 @@ import {
   Center,
   Select,
   Button,
-  Input,
 } from "@chakra-ui/react";
 
+
+type Organization = {
+  cif: string;
+  name: string;
+};
+
 export default function Organizations() {
-  const [organization, setOrganization] = useState(null);
+
+  const [organization, setOrganization] = useState<Organization[] | null>(null);
+  const [inputValue, setInputValue] = useState<string>("");
+
   useEffect(() => {
     const getOrganizations = async () => {
       try {
-        const response = await fetch(
-          `https://mock-api-login-abb.vercel.app/user/v1/users/companies?asainId=020292`
-        );
-
+        const response = await fetch(`https://mock-api-login-abb.vercel.app/user/v1/users/companies?asanId=020292`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
         const data = await response.json();
         console.log(data);
-
         setOrganization(data);
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
       }
     };
-
     getOrganizations();
   }, []);
 
-  const [inputValue, setInputValue] = useState<string>("");
-
-  // Function to handle input change
   const handleInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setInputValue(event.target.value);
   };
@@ -62,9 +60,12 @@ export default function Organizations() {
               value={inputValue}
               onChange={handleInputChange}
             >
-              <option value="option1">{organization}</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+             {organization &&
+                organization.map((org) => (
+                  <option key={org.cif} value={org.name}>
+                    {org.name}
+                  </option>
+                ))}
             </Select>
             <Button bg="blue.500" isDisabled={!inputValue.trim()}>
               Davam et

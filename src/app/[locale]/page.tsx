@@ -22,10 +22,13 @@ export default function Home() {
   const [isLoading, setisLoading] = useState(false);
   const [phone, setPhone] = useState("");
   const [asanId, setAsanId] = useState("");
+  const t = useTranslations() || "";
+
+
+
   const onClose = () => {
     setIsErr(false);
   };
-  const t = useTranslations() || "";
   const isButtonDisabled = !(phone.length === 9 && asanId.length === 6);
 
   const handleSubmit = async () => {
@@ -33,7 +36,6 @@ export default function Home() {
       phoneNumber: `+994${phone}`,
       asanId: asanId,
     };
-
     try {
       const response = await fetch(
         "https://mock-api-login-abb.vercel.app/auth/v1/auth/login/asanimza",
@@ -45,13 +47,10 @@ export default function Home() {
           body: JSON.stringify(requestData),
         }
       );
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const responseData = await response.json();
-      console.log("Response:", responseData.sid);
       setisLoading(true);
       setSid(responseData.sid);
     } catch (error) {
@@ -74,7 +73,7 @@ export default function Home() {
         >
           <AsanKobilLink />
           {isErr && (
-            <Alert status="error">
+            <Alert status="error" borderRadius="5px">
               <AlertIcon />
               <AlertDescription>{t("login.errors.2004")}</AlertDescription>
               <CloseButton
