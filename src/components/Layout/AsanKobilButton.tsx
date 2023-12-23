@@ -6,32 +6,20 @@ interface AsanKobilButtonProps {
   onClick: (id: string, password: string) => void;
   isDisabled: boolean;
 }
-const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({
-  onClick,
-  isDisabled,
-}) => {
+const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({ onClick, isDisabled }) => {
   const t = useTranslations();
-
- 
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  //const submitFunc = (value: any) => {
-  //  console.log(value);
-  //};
 
   const submitFunc = async () => {
     setIsLoading(true);
     try {
-      // Use the state variables directly
       await onClick(id, password);
     } finally {
       setIsLoading(false);
     }
   };
-  const checkInputTextAndNumberValue =
-    id.length === 8 && password.length === 5;
-
   return (
     <Box width="100%">
       <Button

@@ -10,7 +10,6 @@ const IForgotPass = () => {
             fontWeight="500"
             fontSize="sm"
             mt="8px"
-            mb="8px"
           >
             <NavigationLink href={"/forgotpassword"}>
               {t("login.forgotPassword.forgotPasswordForm.heading")}
