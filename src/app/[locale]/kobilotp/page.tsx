@@ -6,10 +6,9 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import FormUsername from "./formUsername";
-import FormPass from "./formPass";
 import IForgotPass from "./iforgotpass";
 import AsanKobilLink from "@/components/Layout/asanKobilLink";
+import KobilForm from "./kobilform";
 
 const KobilOtp = () => {
   const t = useTranslations();
@@ -34,7 +33,10 @@ const KobilOtp = () => {
 
   const pathname = usePathname() || "";
   console.log(pathname);
-
+  const handleClick = () => {
+ 
+    console.log("Button clicked!");
+  };
   return (
     <Layout>
       <VStack
@@ -53,11 +55,10 @@ const KobilOtp = () => {
           alignItems="start"
           width="100%"
         >
-          <FormUsername />
-          <FormPass />
+          <KobilForm/>
           <IForgotPass />
         </VStack>
-        <AsanKobilButton />
+        <AsanKobilButton onClick={handleClick} isDisabled={false}/>
       </VStack>
     </Layout>
   );

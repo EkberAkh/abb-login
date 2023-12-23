@@ -1,13 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
-import {Alert, AlertDescription, AlertIcon, Box, VStack, CloseButton } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  Box,
+  VStack,
+  CloseButton,
+} from "@chakra-ui/react";
 import AsanKobilButton from "@/components/Layout/AsanKobilButton";
-import AsanID from "../../components/Layout/(asanImzaComponents)/asanId";
 import AsanKobilLink from "@/components/Layout/asanKobilLink";
-import FormPhone from "../../components/Layout/(asanImzaComponents)/formPhone";
 import { useTranslations } from "next-intl";
 import Pending from "./Pending";
+import AsanImzaForm from "@/components/Layout/(asanImzaComponents)/asanImzaForm";
 
 export default function Home() {
   const [sid, setSid] = useState(null);
@@ -45,7 +51,7 @@ export default function Home() {
       const responseData = await response.json();
       setisLoading(true);
       setSid(responseData.sid);
-      setVerifCode(responseData.verificationCode)
+      setVerifCode(responseData.verificationCode);
     } catch (error) {
       console.error("Error making the request:", error);
       setIsErr(true);
@@ -80,10 +86,7 @@ export default function Home() {
           )}
           <Box display="flex" flexDirection="column" gap="18px" width="100%">
             <VStack gap="8px" w="100%">
-              <FormPhone setPhone={setPhone} />
-            </VStack>
-            <VStack gap="8px" w="100%">
-              <AsanID setAsanId={setAsanId} />
+              <AsanImzaForm setAsanId={setAsanId} setPhone={setPhone} />
             </VStack>
           </Box>
 
