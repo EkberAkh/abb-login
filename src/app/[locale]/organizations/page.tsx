@@ -1,7 +1,7 @@
 "use client";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Flex, CloseButton, Spacer, Container, Text, Center, Select, Button } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 
@@ -15,6 +15,7 @@ const router = useRouter()
   const [organization, setOrganization] = useState<Organization[] | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const t = useTranslations() || "";
+  const pathName = usePathname();
 
   useEffect(() => {
     const getOrganizations = async () => {
@@ -41,6 +42,10 @@ const router = useRouter()
     router.back()
   }
   
+  const clickDashboardHandler = () => {
+    router.push(`${pathName}/dashboard`)
+  }
+
   return (
     <>
       <Flex>
@@ -65,7 +70,7 @@ const router = useRouter()
                   </option>
                 ))}
             </Select>
-            <Button bg="blue.500" isDisabled={!inputValue.trim()}>
+            <Button bg="blue.500" isDisabled={!inputValue.trim()} onClick={clickDashboardHandler}>
             {t("login.organization.choose")}
             </Button>
             <Button onClick={rejectOrganization} bg="gray.100">{t("login.cancel")}</Button>
