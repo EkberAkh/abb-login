@@ -33,44 +33,7 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
   
     return(
         <FormControl>
-        <FormLabel color="gray.700">{t("login.asanID")}</FormLabel>
-        <Controller
-          name="asanId"
-          control={control}
-          rules={{
-            required: t("login.errorMessages.asanID.required"),
-            validate: (value: string) => {
-              if (value.length !== 6) {
-                return t("login.errorMessages.asanID.matches");
-              }
-              return undefined;
-            },
-          }}
-          render={({ field }) => (
-            <Input
-              {...field}
-              borderColor="gray.300"
-              _invalid={{ borderColor: "red.500" }}
-              placeholder="000000"
-              isInvalid={!!errors.asanId}
-              type="number"
-              w="100%"
-              maxLength={6} // Setting the maxLength here
-              onChange={(e) => {
-                if (e.target.value.length <= 6) {
-                  field.onChange(e);
-                  setLocalAsanId(e.target.value);
-                }
-              }}
-            />
-          )}
-        />
-        {errors?.asanId && (
-          <Text color="red" fontSize="sm" mt="0.5rem">
-            {errors?.asanId?.message}
-          </Text>
-        )}
-        <FormLabel color="gray.700">{t("login.phoneNumber")}</FormLabel>
+            <FormLabel color="gray.700">{t("login.phoneNumber")}</FormLabel>
       <InputGroup w="100%">
         <InputLeftAddon color="gray.700" bg="gray.100" borderRight="0">
           +994
@@ -110,6 +73,44 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
       <FormErrorMessage mt="0.5rem">
         {errors?.phoneNumber?.message}
       </FormErrorMessage>
+        <FormLabel color="gray.700">{t("login.asanID")}</FormLabel>
+        <Controller
+          name="asanId"
+          control={control}
+          rules={{
+            required: t("login.errorMessages.asanID.required"),
+            validate: (value: string) => {
+              if (value.length !== 6) {
+                return t("login.errorMessages.asanID.matches");
+              }
+              return undefined;
+            },
+          }}
+          render={({ field }) => (
+            <Input
+              {...field}
+              borderColor="gray.300"
+              _invalid={{ borderColor: "red.500" }}
+              placeholder="000000"
+              isInvalid={!!errors.asanId}
+              type="number"
+              w="100%"
+              maxLength={6} // Setting the maxLength here
+              onChange={(e) => {
+                if (e.target.value.length <= 6) {
+                  field.onChange(e);
+                  setLocalAsanId(e.target.value);
+                }
+              }}
+            />
+          )}
+        />
+        {errors?.asanId && (
+          <Text color="red" fontSize="sm" mt="0.5rem">
+            {errors?.asanId?.message}
+          </Text>
+        )}
+        
       </FormControl>
     )
 }
