@@ -27,11 +27,14 @@ export default function Home() {
   const onClose = () => {
     setIsErr(false);
   };
-  const isButtonDisabled = !(phone.length === 9 && asanId.length === 6);
+  const isButtonDisabled = !(phone.length === 12 && asanId.length === 6);
 
   const handleSubmit = async () => {
+    let phoneNumber = phone.split(' ').join('');
+    console.log(phoneNumber);
+    
     const requestData = {
-      phoneNumber: `+994${phone}`,
+      phoneNumber: `+994${phoneNumber}`,
       asanId: asanId,
     };
     try {

@@ -2,7 +2,7 @@ import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup, InputLeftA
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-
+import IMask from "imask";
 interface AsanImzaProps {
     setAsanId: (id: string) => void;
     setPhone: (phone: string) => void;
@@ -11,6 +11,16 @@ interface AsanImzaProps {
 const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
     const t = useTranslations();
     const [localAsanId, setLocalAsanId] = useState("");
+    const phoneNumberId = "phone-number-input";
+
+    useEffect(() => {
+      const phoneNumberInput = document.getElementById(phoneNumberId);
+      if (phoneNumberInput) {
+        IMask(phoneNumberInput, {
+          mask: "00 000 00 00",
+        });
+      }
+    }, []);
 
     const {
       control,
@@ -43,7 +53,7 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
               rules={{
                 required: t("login.errorMessages.phoneNumber.required"),
                 validate: (value: string) => {
-                  if (value.length !== 9) {
+                  if (value.length < 12) {
                     return t("login.errorMessages.phoneNumber.matches");
                   }
                 },
@@ -51,6 +61,7 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
               render={({ field }) => (
                 <Input
                   {...field}
+                  id={phoneNumberId}
                   borderLeft="0"
                   borderTopLeftRadius="0"
                   borderBottomLeftRadius="0"
@@ -58,10 +69,15 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
                   placeholder="00 000 00 00"
                   borderColor="gray.300"
                   w="100%"
-                  maxLength={9}
+                  maxLength={12}
+                  autoComplete="off"
                   onChange={(e) => {
                     field.onChange(e);
                     handlePhoneChange(e);
+                  }}
+                  onPaste={(e) => {
+                    e.preventDefault();
+                    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '');
                   }}
                 />
               )}
