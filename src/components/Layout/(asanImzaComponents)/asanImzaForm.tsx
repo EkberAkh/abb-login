@@ -41,7 +41,7 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
     }, [localAsanId, setAsanId]);
   
     return(
-        <FormControl>
+        <FormControl >
           <FormLabel color="gray.700">{t("login.phoneNumber")}</FormLabel>
           <InputGroup w="100%">
             <InputLeftAddon color="gray.700" bg="gray.100" borderRight="0">
@@ -83,9 +83,12 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
               )}
             />
           </InputGroup>
-          <FormErrorMessage mt="0.5rem">
+          {/*<FormErrorMessage mt="0.5rem">
             {errors?.phoneNumber?.message}
-          </FormErrorMessage>
+                </FormErrorMessage>*/}
+          {errors?.phoneNumber && (
+            <Text color="red" fontSize="sm" mt="0.5rem">{errors?.phoneNumber?.message}</Text>
+          )}
           <FormLabel color="gray.700" pt="20px">{t("login.asanID")}</FormLabel>
           <Controller
             name="asanId"
@@ -93,6 +96,7 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
             rules={{
               required: t("login.errorMessages.asanID.required"),
               validate: (value: string) => {
+               
                 if (value.length !== 6) {
                   return t("login.errorMessages.asanID.matches");
                 }
