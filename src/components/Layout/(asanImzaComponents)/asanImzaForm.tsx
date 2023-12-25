@@ -83,9 +83,6 @@ const AsanImzaForm: React.FC<AsanImzaProps> = ({ setAsanId, setPhone }) => {
               )}
             />
           </InputGroup>
-          {/*<FormErrorMessage mt="0.5rem">
-            {errors?.phoneNumber?.message}
-                </FormErrorMessage>*/}
           {errors?.phoneNumber && (
             <Text color="red" fontSize="sm" mt="0.5rem">{errors?.phoneNumber?.message}</Text>
           )}

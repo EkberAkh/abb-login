@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import ForgotButtons from "./forgotButtons";
 import { Controller, useForm } from "react-hook-form";
+import { useState } from "react";
 
 const DevTool: React.ComponentType<any> = dynamic(
   () => import("@hookform/devtools").then((mod) => mod.DevTool),
@@ -15,6 +16,7 @@ const DevTool: React.ComponentType<any> = dynamic(
 );
 
 const ForgotPassword = () => {
+  const [forgetValue, setForgetValue] = useState<string>("");
   const t = useTranslations();
   const {
     control,
@@ -31,6 +33,9 @@ const submitFunc = (value: any) => {
 console.log(value);
 };
 
+const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setForgetValue(e.target.value)
+}
   return (
     <Layout>
       <VStack padding="80px" alignItems="start" width="100%">
@@ -49,14 +54,17 @@ console.log(value);
                 required: t("login.errorMessages.username.required"),
               }}
               render={({ field }) => (
-                <Input {...field} type="text" borderColor="gray.300" />
+                <Input {...field} type="text" borderColor="gray.300" onChange={(e) => {
+                  field.onChange(e);
+                  handlePhoneChange(e);
+                }}/>
               )}
             />
             <FormErrorMessage>{errors?.username?.message}</FormErrorMessage>
         
           </FormControl>
           </form>
-        <ForgotButtons />
+        <ForgotButtons forgetValue={forgetValue} />
       </VStack>
     </Layout>
   );
