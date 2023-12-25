@@ -21,7 +21,7 @@ const Footer = () => {
 
   
   return (
-<HStack minWidth="465px" justify="flex-start" align="center" h="87px" >
+<HStack minWidth="465px" justifyContent="space-between" align="center" h="87px" >
   <Image src="/login/images/asan-logo.svg" />
   <Link fontSize="14px" color="gray.500" fontWeight="400" href={getUrl()} target="_blank" pl="20px" _hover={{ textDecoration: "underline" }}>
     {t("login.howToGetAsanImza")}
