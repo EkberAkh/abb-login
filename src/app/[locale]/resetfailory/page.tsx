@@ -1,5 +1,4 @@
-"use client"
-import { useRouter } from "next/navigation";
+"use client";
 import { useEffect, useState } from "react";
 import { Flex, Text, Button, useToast } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
@@ -7,17 +6,30 @@ import { services } from "./services";
 import { post } from "./post";
 import { useTranslations } from "next-intl";
 import LinksIcon from "./linkIcons";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ResetFailoryPage(): JSX.Element {
   const t = useTranslations("login");
   const toast = useToast();
   const router = useRouter();
-  const { locale, query } = router;
+  //const { locale, query } = router;
+  const searchParams = useSearchParams();
+  const locale = searchParams.get("locale");
+  let query = searchParams.get("query");
   const [successDescription, setSuccessDescription] = useState<string>("");
 
-  const resetFailoryUsername = query.username;
-  const resetFailoryToken = query.token;
+  let resetFailoryUsername = "default-username";
+  let resetFailoryToken = "default-token";
 
+  if (query) {
+    try {
+      const queryObject = JSON.parse(query);
+      resetFailoryUsername = queryObject.username || resetFailoryUsername;
+      resetFailoryToken = queryObject.token || resetFailoryToken;
+    } catch (e) {
+      console.error("Error parsing query string: ", e);
+    }
+  }
   const getANewLink = async () => {
     const requestData = {
       username: resetFailoryUsername,
@@ -56,7 +68,7 @@ export default function ResetFailoryPage(): JSX.Element {
       justifyContent="center"
       alignItems="center"
     >
-      <LinksIcon/>
+      <LinksIcon />
       <Text
         mt="60px"
         color="gray.700"
@@ -83,9 +95,7 @@ export default function ResetFailoryPage(): JSX.Element {
           _focus={{ bg: "gray.100" }}
           onClick={(e: any) => {
             e.preventDefault();
-            router.push(`/${locale}?toKobilTab=true`, undefined, {
-              shallow: true,
-            });
+            router.push(`/${locale}?toKobilTab=true`, undefined);
           }}
         >
           {t("backToLogin")}
