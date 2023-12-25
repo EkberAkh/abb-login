@@ -1,54 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation"; // Corrected import for useRouter
-import { Box, Container, Heading, Progress, Text, Button, Image, Stack, CloseButton, VStack,
-} from "@chakra-ui/react";
+import React from 'react';
+import { useRouter } from "next/navigation";
+import useSWR from 'swr';
+import { Box, Container, Heading, Progress, Text, Button, Image, Stack, CloseButton, VStack } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
+import { usePathname } from 'next/navigation';
 
 interface PendingProps {
   sid: string | null;
   verifCode: string | null;
 }
 
-const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
-  const [progressValue, setProgressValue] = useState(0);
+const fetcher = (url: string) => fetch(url).then(res => res.json());
+
+const Pending: React.FC<PendingProps> = ({ sid, verifCode }) => {
+  const [progressValue, setProgressValue] = React.useState(0);
   const router = useRouter();
   const currentPath = usePathname();
   const t = useTranslations() || "";
 
-  useEffect(() => {
-    const checkStatus = async () => {
-      try {
-        const response = await fetch(
-          `https://mock-api-login-abb.vercel.app/auth/v1/auth/check-status/asanimza?sid=${sid}`
-        );
+  const { data, error } = useSWR(sid ? `https://mock-api-login-abb.vercel.app/auth/v1/auth/check-status/asanimza?sid=${sid}` : null, fetcher, { refreshInterval: 3000 });
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        router.push(`${currentPath}/organizations`);
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    };
+  React.useEffect(() => {
+    if (data) {
+      router.push(`${currentPath}/organizations`);
+    }
+  }, [data, currentPath, router]);
 
-    checkStatus();
-  }, [sid, router]);
-
-
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setProgressValue((prevValue) => Math.min(prevValue + 100 / 1000, 100));
     }, 10);
-    return () => {
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, []);
 
   const clickCloseOrganizationHandler = () => {
     router.back();
   };
-
   const clickHandler = () => {
     router.back();
   };
@@ -126,6 +113,7 @@ const Pending: React.FC<PendingProps> = ({ sid,verifCode }) => {
           {t("login.cancel")}
         </Button>
       </Container>
+      {error && <div>Failed to load</div>}
     </Stack>
   );
 };
