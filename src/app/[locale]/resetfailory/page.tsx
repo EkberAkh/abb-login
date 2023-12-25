@@ -6,21 +6,20 @@ import { services } from "./services";
 import { post } from "./post";
 import { useTranslations } from "next-intl";
 import LinksIcon from "./linkIcons";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function ResetFailoryPage(): JSX.Element {
   const t = useTranslations("login");
   const toast = useToast();
   const router = useRouter();
-  //const { locale, query } = router;
   const searchParams = useSearchParams();
+  const pathName = usePathname();
   const locale = searchParams.get("locale");
   let query = searchParams.get("query");
   const [successDescription, setSuccessDescription] = useState<string>("");
-
   let resetFailoryUsername = "default-username";
   let resetFailoryToken = "default-token";
-
+  let pathNameFirst = pathName.split("/")[1]
   if (query) {
     try {
       const queryObject = JSON.parse(query);
@@ -45,6 +44,8 @@ export default function ResetFailoryPage(): JSX.Element {
         console.log("err", e.error);
       }
     }
+    router.push(`/${pathNameFirst}/onboarding`)
+
   };
 
   useEffect(() => {
