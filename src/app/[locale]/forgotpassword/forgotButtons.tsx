@@ -3,7 +3,10 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Box, Button } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 
-const ForgotButtons = () => {
+interface IProps{
+  forgetValue: string
+}
+const ForgotButtons:React.FC<IProps> = ({forgetValue}) => {
   const t = useTranslations();
   return (
     <Box width="100%">
@@ -16,6 +19,7 @@ const ForgotButtons = () => {
         fontSize="18px"
         lineHeight="28px"
         fontWeight="500"
+        isDisabled = {forgetValue === "" ? true : false }
         mt="16px"
       >
         {t("login.forgotPassword.resetPasswordForm.heading")}
