@@ -12,9 +12,8 @@ import KobilForm from "./kobilform";
 
 const KobilOtp = () => {
   const t = useTranslations();
-
-  const [inputTextValue, setinputTextValue] = useState("");
-  const [inputNumberValue, setInputNumberValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
   const {
     control,
@@ -28,13 +27,11 @@ const KobilOtp = () => {
       password: "",
     },
   });
-  const checkInputTextAndNumberValue =
-    inputTextValue.length === 8 && inputNumberValue.length === 5;
+  // const checkInputTextAndNumberValue =
+  //   inputTextValue.length === 8 && inputNumberValue.length === 5;
 
   const pathname = usePathname() || "";
-  console.log(pathname);
   const handleClick = () => {
- 
     console.log("Button clicked!");
   };
   return (
@@ -55,10 +52,11 @@ const KobilOtp = () => {
           alignItems="start"
           width="100%"
         >
-          <KobilForm/>
+        <KobilForm setUsernameValue={setUsernameValue} setPasswordValue={setPasswordValue} />
+
           <IForgotPass />
         </VStack>
-        <AsanKobilButton onClick={handleClick} isDisabled={false}/>
+        <AsanKobilButton onClick={handleClick} isDisabled={!usernameValue || !passwordValue} />
       </VStack>
     </Layout>
   );

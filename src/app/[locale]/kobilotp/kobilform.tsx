@@ -13,10 +13,14 @@ import { useTranslations } from "next-intl";
 import React, { BaseSyntheticEvent, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-const KobilForm = () => {
+interface IKobilProps {
+  setUsernameValue: React.Dispatch<React.SetStateAction<string>>;
+  setPasswordValue: React.Dispatch<React.SetStateAction<string>>;
+}
+const KobilForm: React.FC<IKobilProps> = ({ setUsernameValue, setPasswordValue }) => {
   const t = useTranslations();
   const [showPassword, setShowPassword] = useState(false);
-  
+
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -51,7 +55,10 @@ const KobilForm = () => {
           rules={{
             required: t("login.errorMessages.username.required"),
           }}
-          render={({ field }) => <Input {...field} type="text" borderColor="gray.300" />}
+          render={({ field }) => <Input {...field} type="text" borderColor="gray.300" onChange={(e) => {
+            field.onChange(e);
+            setUsernameValue(e.target.value)
+          }} />}
         />
         <FormErrorMessage>{errors?.username?.message}</FormErrorMessage>
       </FormControl>
@@ -68,7 +75,10 @@ const KobilForm = () => {
               required: t("login.errorMessages.firstPassword.required"),
             }}
             render={({ field }) => (
-              <Input {...field} type={showPassword ? "text" : "password"} borderColor="gray.300" />
+              <Input {...field} type={showPassword ? "text" : "password"} borderColor="gray.300" onChange={(e) => {
+                field.onChange(e);
+                setPasswordValue(e.target.value)
+              }}/>
             )}
           />
           <InputRightElement>
