@@ -43,7 +43,7 @@ const Pending: React.FC<PendingProps> = ({ sid, verifCode }) => {
   return (
     <Stack position="relative">
       <CloseButton
-        onClick={() => clickCloseOrganizationHandler}
+        onClick={clickCloseOrganizationHandler}
         position="absolute"
         right="24px"
         top="24px"

@@ -60,20 +60,22 @@ const router = useRouter()
 
             </Text>
             <Select
+            h="45px"
+             placeholder='Axtar'
               value={inputValue}
               onChange={handleInputChange}
             >
              {organization &&
                 organization.map((org) => (
-                  <option key={org.cif} value={org.name}>
+                  <option key={org.cif} value={org.name} >
                     {org.name}
                   </option>
                 ))}
             </Select>
-            <Button bg="blue.500" isDisabled={!inputValue.trim()} onClick={clickDashboardHandler}>
+            <Button  padding="25px 0" colorScheme="brand" variant="solid" isDisabled={!inputValue.trim()} onClick={clickDashboardHandler}>
             {t("login.organization.choose")}
             </Button>
-            <Button onClick={rejectOrganization} bg="gray.100">{t("login.cancel")}</Button>
+            <Button onClick={rejectOrganization} bg="gray.200" color="black" padding="25px 0">{t("login.cancel")}</Button>
           </Flex>
         </Center>
       </Container>

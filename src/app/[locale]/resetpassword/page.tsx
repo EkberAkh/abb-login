@@ -21,7 +21,7 @@ export interface ILinkDataProps {
 
 export default function ResetPasswordPage(): JSX.Element {
   const t = useTranslations();
-  //const { asPath, locale, query, push } = useRouter();
+
   
   const searchParams = useSearchParams();
   const router = useRouter()

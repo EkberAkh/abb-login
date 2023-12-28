@@ -77,8 +77,6 @@ export const ResetNew = () => {
                 />
               </InputRightElement>
       </InputGroup>
-
-      
       {/*<FormErrorMessage display="inline" color="#f31414" fontSize="sm" lineHeight="20px">
         <Trans
           ns="login"

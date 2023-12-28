@@ -1,5 +1,6 @@
 import { Box, Button, Spinner, Text } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface AsanKobilButtonProps {
@@ -8,10 +9,12 @@ interface AsanKobilButtonProps {
 }
 const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({ onClick, isDisabled }) => {
   const t = useTranslations();
+  const router = useRouter();
+  const pathName = usePathname();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const langPath = pathName.split("/")[1];
   const submitFunc = async () => {
     setIsLoading(true);
     try {
@@ -20,6 +23,9 @@ const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({ onClick, isDisabled }
       setIsLoading(false);
     }
   };
+  const registrationHandler = () => {
+      router.push(`/${langPath}/onboarding`)
+  }
   return (
     <Box width="100%">
       <Button
@@ -44,7 +50,7 @@ const AsanKobilButton: React.FC<AsanKobilButtonProps> = ({ onClick, isDisabled }
       >
         {t("login.or")}
       </Text>
-      <Button variant="gray" w="100%" lineHeight="28px" padding="10px 24px">
+      <Button variant="gray" w="100%" lineHeight="28px" padding="10px 24px" onClick={registrationHandler}>
         {t("login.beCustomer")}
       </Button>
     </Box>
