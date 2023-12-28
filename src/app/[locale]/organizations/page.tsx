@@ -60,8 +60,8 @@ const router = useRouter()
 
             </Text>
             <Select
-            h="50px"
-             placeholder='AXDAR'
+            h="45px"
+             placeholder='Axtar'
               value={inputValue}
               onChange={handleInputChange}
             >

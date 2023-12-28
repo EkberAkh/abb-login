@@ -7,12 +7,12 @@ import React from "react";
 const Footer = () => {
   const t = useTranslations();
   const pathName = usePathname();
-
+  const path = pathName.split("/")[1];
 
   const getUrl = () => {
-    if (pathName === "/az") {
+    if (path === "az") {
       return "https://asanimza.az/";
-    } else if (pathName === "/en") {
+    } else if (path === "en") {
       return "https://asanimza.az/en/";
     } else {
       return "https://asanimza.az/";
